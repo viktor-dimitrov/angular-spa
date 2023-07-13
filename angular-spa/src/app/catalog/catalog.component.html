@@ -4,7 +4,7 @@
 
     
 
-    <section class="catalog-container">
+    <section class="catalog-container"  *ngFor="let record of recordsList"  >
 
         <article class="card">
             <div class="card-img">
@@ -12,39 +12,11 @@
             </div>
 
             <div class="card-content">
-              <p>Author</p>
-              <p>Title</p>
-              <p>year</p>
+              <p>{{record.artist}}</p>
+              <p>{{record.title}}</p>
+              <p>{{record.year}}</p>
             </div>
         </article>
-
-        <article class="card">
-
-            <div class="card-img">
-
-            </div>
-
-            <div class="card-content">
-              <p>Author</p>
-              <p>Title</p>
-              <p>year</p>
-            </div>
-        </article>
-
-        <article class="card">
-
-            <div class="card-img">
-
-            </div>
-
-            <div class="card-content">
-              <p>Author</p>
-              <p>Title</p>
-              <p>year</p>
-            </div>
-        </article>
-        
-
 
     </section>
 

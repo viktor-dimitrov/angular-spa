@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { Record} from '../types/record';
 
 
 @Component({
@@ -6,12 +8,29 @@ import { Component } from '@angular/core';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit{
+
+  recordsList: Record[] = [];
 
 
 
 
-constructor(){}
+constructor(private apiService: ApiService){}
+
+ngOnInit(): void {
+  this.apiService.getRecords().subscribe({
+    next: (posts)=> {
+     this.recordsList = posts;
+    //  this.isLoading = false;
+    },
+    error: (err) => {
+    //  this.isLoading = false;
+     console.error(`Error: ${err}`);
+
+    } 
+     
+   })
+}
 
 
 }
