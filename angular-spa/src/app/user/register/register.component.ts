@@ -18,19 +18,13 @@ export class RegisterComponent {
 
 
   register(): void {
-    const data = {username:'kaloian', email:'kokoko@ko.ko', imageUrl: 'http://adafaefae', phone: 123456356, password:'asdasdf', repassword:'asdasdf'}
+    const data = {username:'kaloian', email:'abv@abv.bg', imageUrl: 'http://adafaefae', phone: 123456356, password:'123456', repassword:'123456'}
 
-    const newUser = this.userService.register(data).subscribe(response => {
-      // Store the response in localStorage
-      // localStorage.setItem('token', response.token);
-   
-      console.log(response)
-    }
-
-
-    )
-  
-    this.router.navigate(['/']);
+    this.userService.register(data)
+     this.router.navigate(['/']);
   }
+
+
+
 
 }

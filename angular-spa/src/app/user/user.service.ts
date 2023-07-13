@@ -3,6 +3,7 @@ import { User } from '../types/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
 
 
 
@@ -12,12 +13,12 @@ import { environment } from 'src/environments/environment.development';
 })
 export class UserService {
 
-   httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'Content-Type, X-Authorization'
-    })
-  };
+  //  httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin':'Content-Type, X-Authorization'
+  //   })
+  // };
 
   user: User | undefined;
   USER_KEY = '[user]';
@@ -38,27 +39,38 @@ export class UserService {
 
   
 
-  register(userData: any) : Observable<any>{
-console.log(userData)
+  register(userData: any) : void {
     const {authUrl} = environment;
-    return this.http.post<any>(`${authUrl}/register`, userData, this.httpOptions);
-
+    const regUser: Observable<any> = this.http.post<any>(`${authUrl}/register`, userData);
+    
+    regUser.subscribe({
+      next: response => {
+       this.user = response;
+       localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
+      },
+      error: (err) => {
+         console.log(`Error: ${err}`);
+      } 
+    })
   }
 
 
-  login(): void {
+  login(userData: any): void {
 
-    this.user = {
-      email: 'viko@abv.bg',
-      userName: 'Viko',
-      _id: 'qwerqer',
-      imageUrl: 'qweqerqer',
-      phone: '1231234',
-      accessToken: "qwerqwer" || undefined,
+    const {authUrl} = environment;
+    const logUser: Observable<any> = this.http.post<any>(`${authUrl}/login`, userData);
 
-    }
+    logUser.subscribe({
+      next: response => {
+        console.log(response)
+       this.user = response;
+       localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
+      },
+      error: (err) => {
+         console.log(`Error: ${err}`);
+      } 
+    })
 
-    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
   }
 
   logout(): void {
