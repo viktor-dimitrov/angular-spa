@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+   emailDomains = DEFAULT_EMAIL_DOMAINS;
+
 constructor(private userService: UserService, private router: Router){}
 
-  login() :void {
-    const data = {email: 'abv@abv.bg', password: '123456'}
-
+  login(form: NgForm) :void {
+    const data = form.value;
     
     this.userService.login(data)
     this.router.navigate(['/']);

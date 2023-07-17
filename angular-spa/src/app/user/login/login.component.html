@@ -2,24 +2,63 @@
 
     <h2>Login</h2>
 
-    <form class="login-form">
+
+
+    <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
 
         <div class="div-in-form">
             <label for="email">Email</label>
-            <input type="email" name="email">
+            <input 
+            type="email"
+            name="email"
+            #inputEmail="ngModel"
+            ngModel
+            required
+            [appEmail]="emailDomains"
+
+            >
+
         </div>
+
+        <div class="error" *ngIf="inputEmail.touched">
+        
+            <p *ngIf="inputEmail.errors?.['required']">Email is required </p> 
+            <p *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid </p>
+        
+        </div>
+
+
         
         <div class="div-in-form">
             <label for="password">Password</label>
-            <input type="password" name="password">
+            <input 
+            type="password"
+            name="password"
+            #inputPassword="ngModel"
+            ngModel
+            required
+            minlength="5"
+            >
         </div>
 
-        <button (click)="login()" >Login from Button</button>
+        <ng-container  *ngIf="inputPassword.touched">
 
-        <input type="submit" value="Login">
+            <p *ngIf="inputPassword.errors?.['required']" >Password is required </p>
+            <p *ngIf="inputPassword.errors?.['minlength']" >Password is too short </p>
+
+        </ng-container>
+
+
+
+     
+
+        <input [disabled]="form.invalid" type="submit" value="Login">
+
     
     </form>
 
 
 
 </div>
+
+
