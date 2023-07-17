@@ -19,8 +19,9 @@ constructor(private userService: UserService, private router: Router){}
     const data = form.value; 
     
     if(form.valid){
-       this.userService.login(data);
-    this.router.navigate(['/']);
+
+       this.userService.login(data); 
+        // this.router.navigate(['/']);
     }
  
   }

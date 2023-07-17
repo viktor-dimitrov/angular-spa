@@ -23,11 +23,9 @@ export class RegisterComponent {
     const data = form.value;
 
     if(form.valid){
-
-    
     this.userService.register(data)
      this.router.navigate(['/']);
-    }
+    } 
 
   }
 

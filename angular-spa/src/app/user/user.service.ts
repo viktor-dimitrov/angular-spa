@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
 
+  
   //  httpOptions = {
   //   headers: new HttpHeaders({
   //     'Content-Type': 'application/json',
@@ -66,8 +67,8 @@ export class UserService {
        this.user = response;
        localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
       },
-      error: (err) => {
-         console.log(`Error: ${err}`);
+      error: ({error}) => {
+         console.error (error.error);
       } 
     })
 

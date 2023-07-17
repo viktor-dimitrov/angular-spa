@@ -1,6 +1,6 @@
 <div class="register">
 
-    <h2>Register</h2>
+    <h2>Sign Up</h2>
 
     <form class="register-form" #form="ngForm" (ngSubmit)="register(form)">
 
@@ -92,14 +92,15 @@
 
         <div class="error">
             <ng-container *ngIf="inputRePassword.touched">
-                <p *ngIf="inputRePassword.errors?.['required']">RePassword is required </p>
-                <p *ngIf="inputRePassword.errors?.['minlength']">RePassword is too short </p>
+                <p *ngIf="inputRePassword.errors?.['required']">Password confirmation is required </p>
+                <p *ngIf="inputRePassword.errors?.['minlength']">Password confirmation is too short </p>
+                <p *ngIf="inputPassword.value !== inputRePassword.value">Password confirmation does not match</p>
             </ng-container>
         </div>
 
        
 
-        <input type="submit" value="Register">
+        <input class="submit" type="submit" value="Register">
     
     </form>
 
