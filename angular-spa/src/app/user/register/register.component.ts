@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/types/user';
+import { NgForm } from '@angular/forms';
+import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 
+import { User } from 'src/app/types/user';
 
 
 @Component({
@@ -12,16 +14,21 @@ import { User } from 'src/app/types/user';
 })
 export class RegisterComponent {
 
-
+  emailDomains = DEFAULT_EMAIL_DOMAINS;
 
   constructor(private userService: UserService, private router: Router){}
 
 
-  register(): void {
-    const data = {username:'kaloian', email:'abv@abv.bg', imageUrl: 'http://adafaefae', phone: 123456356, password:'123456', repassword:'123456'}
+  register(form: NgForm): void {
+    const data = form.value;
 
+    if(form.valid){
+
+    
     this.userService.register(data)
      this.router.navigate(['/']);
+    }
+
   }
 
 

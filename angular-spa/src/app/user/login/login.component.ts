@@ -16,10 +16,13 @@ export class LoginComponent {
 constructor(private userService: UserService, private router: Router){}
 
   login(form: NgForm) :void {
-    const data = form.value;
+    const data = form.value; 
     
-    this.userService.login(data)
+    if(form.valid){
+       this.userService.login(data);
     this.router.navigate(['/']);
+    }
+ 
   }
 
 }
