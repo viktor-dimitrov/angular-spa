@@ -5,20 +5,17 @@
     </div>
 
     <nav>
-        <ul >
-           
+        <ul *ngIf="isLoggedIn">
             <li><a routerLink="/profile">Profile</a></li>
-            <li><a routerLink="/catalog">All Records</a></li>
+            <li><a routerLink="/catalog">Catalog</a></li>
             <li><a routerLink="/post">Post Record</a></li>
-           
+            <li (click)="logout()" ><a href="/">Logout</a></li>
+        </ul>
 
+        <ul *ngIf="!isLoggedIn">
+            <li><a routerLink="/catalog">Catalog</a></li>
             <li><a routerLink="/login">Login</a></li>
             <li><a routerLink="/register">Register</a></li>
-            <li (click)="logout()" ><a href="/">Logout</a></li>
-
-            
-
-
         </ul>
     </nav>
 
