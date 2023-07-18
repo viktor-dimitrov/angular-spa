@@ -11,19 +11,23 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 })
 export class LoginComponent {
 
-   emailDomains = DEFAULT_EMAIL_DOMAINS;
+  emailDomains = DEFAULT_EMAIL_DOMAINS;
+  error: string | undefined;
 
-constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router) { }
 
-  login(form: NgForm) :void {
-    const data = form.value; 
-    
-    if(form.valid){
+  login(form: NgForm): void {
+    const data = form.value;
 
-       this.userService.login(data); 
-        // this.router.navigate(['/']);
+    if (form.valid) {
+      this.userService.login(data).subscribe({
+        next: (response) => this.userService.setLsUser(response),
+        error: ({ error }) => this.error = error.error,
+        complete: () => this.router.navigate(['/'])
+      })
+
     }
- 
+
   }
 
 }

@@ -4,9 +4,6 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/validators/constants';
 
-import { User } from 'src/app/types/user';
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -15,24 +12,24 @@ import { User } from 'src/app/types/user';
 export class RegisterComponent {
 
   emailDomains = DEFAULT_EMAIL_DOMAINS;
+  error: string | undefined
 
-  constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router) { }
 
 
   register(form: NgForm): void {
     const data = form.value;
 
-    if(form.valid && (form.value.password == form.value.repassword)){
+    if (form.valid && (form.value.password == form.value.repassword)) {
 
-    this.userService.register(data)
-     this.router.navigate(['/']);
+      this.userService.register(data).subscribe({
+        next: (response) => this.userService.setLsUser(response),
+        error: ({ error }) => this.error = error.error,
+        complete: () => this.router.navigate(['/'])
+      })
     } else {
-       return
+      return
     }
-
   }
-
-
-
 
 }

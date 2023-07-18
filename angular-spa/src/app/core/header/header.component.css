@@ -22,14 +22,17 @@
     margin-right:3rem;
 }
 
-.header a {
+.header a, p {
     font-family: monospace, serif;
     display: block;
     text-decoration: none;
     color:azure;
-
     font-weight: 700;
+    cursor: pointer;
+}
 
+.header p:hover {
+    color: rgb(177, 20, 20);
 }
 
 

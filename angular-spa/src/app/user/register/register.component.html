@@ -6,50 +6,30 @@
 
         <div class="div-in-form">
             <label for="username">Username</label>
-            <input
-             type="text"
-            name="username"
-            ngModel
-            #inputUsername = "ngModel"
-            required
-            minlength="3"
-              >
+            <input type="text" name="username" ngModel #inputUsername="ngModel" required minlength="3">
         </div>
 
-        <div class="error" >
+        <div class="error">
             <ng-container *ngIf="inputUsername.touched">
-            <p *ngIf="inputUsername.errors?.['required']">Username is required </p> 
-          </ng-container>
+                <p *ngIf="inputUsername.errors?.['required']">Username is required </p>
+            </ng-container>
         </div>
 
         <div class="div-in-form">
             <label for="email">Email</label>
-            <input
-             type="email"
-              name="email"
-              ngModel
-              #inputEmail = "ngModel"
-              required
-              [appEmail]="emailDomains"
-              >
+            <input type="email" name="email" ngModel #inputEmail="ngModel" required [appEmail]="emailDomains">
         </div>
 
-        <div class="error" >
+        <div class="error">
             <ng-container *ngIf="inputEmail.touched">
-            <p *ngIf="inputEmail.errors?.['required']">Email is required </p> 
-            <p *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid </p>
-          </ng-container>
+                <p *ngIf="inputEmail.errors?.['required']">Email is required </p>
+                <p *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid </p>
+            </ng-container>
         </div>
 
         <div class="div-in-form">
             <label for="phone">Phone Number</label>
-            <input
-             type="tel"
-             name="phone"
-             ngModel
-             #inputPhone="ngModel"
-             required
-              >
+            <input type="tel" name="phone" ngModel #inputPhone="ngModel" required>
         </div>
 
         <div class="error">
@@ -57,17 +37,10 @@
                 <p *ngIf="inputPhone.errors?.['required']">Phone Number is required </p>
             </ng-container>
         </div>
-        
+
         <div class="div-in-form">
             <label for="password">Password</label>
-            <input
-             type="password"
-              name="password"
-              ngModel
-              #inputPassword="ngModel"
-              required
-              minlength="5"
-              >
+            <input type="password" name="password" ngModel #inputPassword="ngModel" required minlength="5">
         </div>
 
         <div class="error">
@@ -79,15 +52,7 @@
 
         <div class="div-in-form">
             <label for="rePassword">Confirm Password</label>
-            <input
-              type="password"
-              name="repassword"
-              ngModel
-              #inputRePassword="ngModel"
-              required
-              minlength="5"
-              
-              >
+            <input type="password" name="repassword" ngModel #inputRePassword="ngModel" required minlength="5">
         </div>
 
         <div class="error">
@@ -98,13 +63,16 @@
             </ng-container>
         </div>
 
-       
+        <div class="error">
+            <ng-container *ngIf="error">
+                <p>{{error}}</p>
+            </ng-container>
+        </div>
 
         <input class="submit" type="submit" value="Register">
-    
+
     </form>
 
 
 
 </div>
-
