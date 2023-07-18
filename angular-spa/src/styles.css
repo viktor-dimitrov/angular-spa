@@ -35,13 +35,14 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
+  display: block;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  background-image: url('/assets/images/background.jpg');
-  background-size: cover;
 
 }
+
+
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
