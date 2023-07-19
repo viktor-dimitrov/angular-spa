@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Record} from '../types/record';
+import { Record} from '../shared/types/record';
 
 
 @Component({

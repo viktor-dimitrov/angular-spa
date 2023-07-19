@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from '../types/user';
+import { User } from '../shared/types/user';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { LocalizedString } from '@angular/compiler';
 
 
 
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment.development';
 export class UserService {
 
   user: User | undefined;
-  USER_KEY = '[user]';
+  USER_KEY = 'user';
 
   get isLogged(): boolean {
     return !!this.user;
@@ -30,6 +31,11 @@ export class UserService {
   setLsUser(user: User): void {
     this.user = user;
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user))
+  }
+
+  getUser() : User |undefined {
+    const user = this.user ? this.user : undefined
+    return user
   }
 
   register(userData: User): Observable<User> {

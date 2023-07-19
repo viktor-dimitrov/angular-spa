@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Record } from './types/record';
+import { Record } from './shared/types/record';
 
 
 @Injectable({
@@ -13,8 +13,8 @@ export class ApiService {
 
 
   getRecords () {
-    const {appUrl} = environment;
-    return this.http.get< Record[] >(`${appUrl}/records`);
+    const {dataUrl} = environment;
+    return this.http.get< Record[] >(`${dataUrl}/records`);
   }
 
 
