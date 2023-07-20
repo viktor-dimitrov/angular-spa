@@ -33,7 +33,7 @@
     height: 20rem;
     display: inline-block;
     background-color: rgb(31, 32, 32);
-    border: 2px solid red;
+    border: 1px solid #84d0f5;
     margin-bottom: 2rem;
     border-radius: 1rem;
     overflow: hidden;
