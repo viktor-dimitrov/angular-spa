@@ -24,15 +24,16 @@ export class PostRecordComponent {
   postRecord(form: NgForm){
 
     const data = form.value;
-
+    console.log(data)
     if (form.valid) {
-
+    
       this.recordService.postRecord(data).subscribe({
         next: (response) => console.log('Your Record has succesfully added'),
         error: ({ error }) => this.error = error.error,
         complete: () => this.router.navigate(['/'])
       })
     } else {
+      console.log('invalid')
       return
     }
 

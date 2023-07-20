@@ -12,14 +12,18 @@ export class RecordService {
 
   constructor(private http: HttpClient) { }
 
+
+ getRecords () {
+    const {dataUrl} = environment;
+    return this.http.get< Record[] >(`${dataUrl}/records`);
+  }
+
+
+
 postRecord(data: Record): Observable<Record> {
   const { dataUrl } = environment;
   return   this.http.post<Record>(`${dataUrl}/post`, data)
 }
 
-// register(userData: User): Observable<User> {
-//     const { authUrl } = environment;
-//     return this.http.post<User>(`${authUrl}/register`, userData);
-//   }
 
 }

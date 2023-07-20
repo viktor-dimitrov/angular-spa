@@ -2,23 +2,26 @@
 
     <h2>Catalog</h2>
 
-    
+    <section class="card-container"    >
 
-    <section class="catalog-container"  *ngFor="let record of recordsList"  >
-
-        <article class="card">
-            <div class="card-img">
-
+       
+        <article class="card"  *ngFor="let record of recordsList">
+            <div class="card-img-container">
+                <img src={{record.imageUrl}} alt="">
             </div>
 
             <div class="card-content">
               <p>{{record.artist}}</p>
               <p>{{record.title}}</p>
-              <p>{{record.year}}</p>
             </div>
         </article>
 
     </section>
+
+
+
+
+
 
 
 </div>

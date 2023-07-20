@@ -12,7 +12,7 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { RecordModule } from './records/record.module';
-import { PostRecordComponent } from './records/post-record/post-record.component';
+
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 

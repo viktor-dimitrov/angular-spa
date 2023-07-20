@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 import { Record} from '../shared/types/record';
+import { RecordService } from '../records/record.service';
 
 
 @Component({
@@ -15,10 +15,10 @@ export class CatalogComponent implements OnInit{
 
 
 
-constructor(private apiService: ApiService){}
+constructor(private recordService: RecordService){}
 
 ngOnInit(): void {
-  this.apiService.getRecords().subscribe({
+  this.recordService.getRecords().subscribe({
     next: (posts)=> {
      this.recordsList = posts;
     //  this.isLoading = false;
