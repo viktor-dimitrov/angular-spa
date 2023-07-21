@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Record} from '../shared/types/record';
-import { RecordService } from '../records/record.service';
+import { Record} from '../../shared/types/record';
+import { RecordService } from '../record.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -15,7 +17,7 @@ export class CatalogComponent implements OnInit{
 
 
 
-constructor(private recordService: RecordService){}
+constructor(private recordService: RecordService, private router: Router){}
 
 ngOnInit(): void {
   this.recordService.getRecords().subscribe({
@@ -31,6 +33,12 @@ ngOnInit(): void {
      
    })
 }
+
+
+
+
+
+
 
 
 }

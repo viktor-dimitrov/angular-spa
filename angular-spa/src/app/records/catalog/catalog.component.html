@@ -5,15 +5,20 @@
     <section class="card-container"    >
 
        
-        <article class="card"  *ngFor="let record of recordsList">
-            <div class="card-img-container">
+        <article class="card"  *ngFor="let record of recordsList"   >
+
+           
+            <div  class="card-img-container">
                 <img src={{record.imageUrl}} alt="">
             </div>
-
+          
             <div class="card-content">
+                <a [routerLink]="record._id">View</a>
               <p>{{record.artist}}</p>
               <p>{{record.title}}</p>
             </div>
+         
+
         </article>
 
     </section>

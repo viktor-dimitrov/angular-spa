@@ -3,16 +3,34 @@ import { RouterModule, Routes} from '@angular/router';
 
 import { AuthActivate } from '../core/guards/auth.activate';
 import { PostRecordComponent } from './post-record/post-record.component';
+import { RecordComponent } from './record/record.component';
+import { CatalogComponent } from './catalog/catalog.component';
 
 
 
 const routes: Routes = [
+
+  {
+    path: 'catalog',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: CatalogComponent,
+      },
+      {
+        path: ':recordId',
+        component: RecordComponent
+      }]
+  },
+
   {
     path: 'post',
     component: PostRecordComponent,
     canActivate: [AuthActivate]
   
   },
+
 
 ];
 
