@@ -30,7 +30,7 @@ export class PostRecordComponent {
       this.recordService.postRecord(data).subscribe({
         next: (response) => console.log('Your Record has succesfully added'),
         error: ({ error }) => this.error = error.error,
-        complete: () => this.router.navigate(['/'])
+        complete: () => this.router.navigate(['/catalog'])
       })
     } else {
       console.log('invalid')
