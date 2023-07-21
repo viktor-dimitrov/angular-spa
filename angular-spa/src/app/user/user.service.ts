@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../shared/types/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { LocalizedString } from '@angular/compiler';
+
 
 
 
@@ -12,6 +12,10 @@ import { LocalizedString } from '@angular/compiler';
 })
 export class UserService {
 
+  private user$$ = new BehaviorSubject<User | undefined>(undefined);
+  public user$ = this.user$$.asObservable();
+
+
   user: User | undefined;
   USER_KEY = 'user';
 
@@ -19,6 +23,8 @@ export class UserService {
     return !!this.user;
   }
 
+
+  
   constructor(private http: HttpClient) {
     try {
       const lsUser = localStorage.getItem(this.USER_KEY) || '';
@@ -38,14 +44,15 @@ export class UserService {
     return user
   }
 
+
   register(userData: User): Observable<User> {
     const { authUrl } = environment;
-    return this.http.post<User>(`${authUrl}/register`, userData);
+    return this.http.post<User>(`${authUrl}/register`, userData).pipe(tap((user)=>this.user$$.next(user)));
   }
 
   login(userData: User): Observable<User> {
     const { authUrl } = environment;
-    return this.http.post<User>(`${authUrl}/login`, userData);
+    return this.http.post<User>(`${authUrl}/login`, userData).pipe(tap((user)=>this.user$$.next(user)));
   }
 
   logout(): void {
