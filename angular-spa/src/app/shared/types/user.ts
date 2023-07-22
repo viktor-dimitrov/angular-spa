@@ -5,4 +5,5 @@ export interface User {
     phone: string,
     imageUrl: string,
     accessToken: string | undefined,
+    myPosts: string[] | undefined
 }

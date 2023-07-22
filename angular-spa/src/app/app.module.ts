@@ -30,7 +30,7 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     HttpClientModule,
     SharedModule,
     UserModule,
-    RecordModule,
+    RecordModule, 
     AppRoutingModule,
   ],
   providers: [    {

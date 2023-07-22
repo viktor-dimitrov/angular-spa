@@ -18,7 +18,7 @@ export class RegisterComponent {
 
 
   register(form: NgForm): void {
-    const data = form.value;
+    const data = {...form.value};
 
     if (form.valid && (form.value.password == form.value.repassword)) {
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-
+import { User } from 'src/app/shared/types/user';
 
 import { Router } from '@angular/router';
 import { RecordService } from '../record.service';
 import { NgForm, NgModel } from '@angular/forms';
+import { UserService } from 'src/app/user/user.service';
 
 
 
@@ -18,17 +19,19 @@ export class PostRecordComponent {
   error: string | undefined
 
 
-  constructor(private recordService: RecordService, private router: Router){}
+  constructor(private recordService: RecordService, private router: Router, private userService: UserService){}
 
 
   postRecord(form: NgForm){
 
-    const data = form.value;
-    console.log(data)
-    if (form.valid) {
-    
+   
+     const user = this.userService.getUser();  
+     let data = {...form.value, user };
+
+    if (form.valid && user) {
+
       this.recordService.postRecord(data).subscribe({
-        next: (response) => console.log('Your Record has succesfully added'),
+        next: (response) => this.userService.updateUserPosts(response._id),
         error: ({ error }) => this.error = error.error,
         complete: () => this.router.navigate(['/catalog'])
       })

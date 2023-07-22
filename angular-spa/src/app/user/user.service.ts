@@ -44,6 +44,16 @@ export class UserService {
     return user
   }
 
+  updateUserPosts(recordId: string) : void {
+
+    if (this.user?.myPosts) {
+      this.user.myPosts.push(recordId);
+      this.user$$.next(this.user);
+      localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+    }
+
+  }
+
 
   register(userData: User): Observable<User> {
     const { authUrl } = environment;
