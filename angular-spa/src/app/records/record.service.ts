@@ -9,6 +9,7 @@ import { Record } from '../shared/types/record';
   providedIn: 'root'
 })
 export class RecordService {
+  
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +17,11 @@ export class RecordService {
  getRecords () {
     const {dataUrl} = environment;
     return this.http.get< Record[] >(`${dataUrl}/records`);
+  }
+
+  getOneRecord (recordId: string) : Observable<Record> {
+    const {dataUrl} = environment;
+    return this.http.get<Record>(`${dataUrl}/records/${recordId}`);
   }
 
 
