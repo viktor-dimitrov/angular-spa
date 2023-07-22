@@ -5,18 +5,25 @@
     <section class="card-container"  *ngIf="record"   >
 
         <article class="card" >
+
+          
+
+
             <div  class="card-img-container">
                 <img src={{record.imageUrl}} alt="">
             </div>
           
-            <div class="card-content">
-              <p>{{record.artist}}</p>
-              <p>{{record.title}}</p>
+            <ul class="card-content">
 
-              <p>{{record.artist}}</p>
-              <p>{{record.title}}</p>
+                <li><p>Artist:</p> <h3>{{record.artist}}</h3> </li>
+                <li><p>Title:</p> <h3>{{record.title}}</h3> </li>
+                <li><p>Style:</p> <h3>{{record.style}}</h3> </li>
+                <li><p>year:</p> <h3>{{record.year}}</h3> </li>
+
+           
+             
               
-            </div>
+            </ul>
         </article>
 
     </section> 

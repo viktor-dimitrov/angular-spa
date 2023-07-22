@@ -38,14 +38,14 @@
     margin-bottom: 2rem;
     border-radius: 1rem;
     overflow: hidden;
+    padding: 2%;
 
 }
 
 .card-img-container {
-  
     width: 40%;
     height: 70%;
-    padding: 2%;
+   
 }
 
 .card-img-container img {
@@ -58,12 +58,28 @@
 }
 
 .card-content{
-
-    
+    display: flex;
+    flex-direction: column;
     width: 60%;
-    text-align: center;
-    padding: auto;
+ 
+    padding: 2% 5% 2% 3%;
    
     color: aliceblue;
    
+}
+
+.card-content p, h3 {
+    display:inline;
+
+}
+
+.card-content p {
+    margin-right: auto;
+}
+
+
+
+.card-content li {
+    display:flex;
+  
 }

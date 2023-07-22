@@ -4,5 +4,6 @@ export interface Record {
     title: string,
     year: number,
     style: string,
-    imageUrl: string
+    imageUrl: string,
+    _createdOn: string,
 }

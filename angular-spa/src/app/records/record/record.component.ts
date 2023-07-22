@@ -25,7 +25,7 @@ export class RecordComponent implements OnInit{
     const id = this.activatedRoute.snapshot.params['recordId'];
     this.recordService.getOneRecord(id).subscribe((response) => {
       this.record = response;
-      console.log(this.record)
+      console.log(response)
 
     });
   }
