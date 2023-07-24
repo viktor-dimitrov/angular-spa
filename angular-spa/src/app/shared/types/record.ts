@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Record {
     _id: string,
     artist: string,
@@ -5,5 +7,6 @@ export interface Record {
     year: number,
     style: string,
     imageUrl: string,
-    _createdOn: string,
+    _createdOn: number,
+    _ownerId: User
 }

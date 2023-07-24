@@ -48,6 +48,15 @@
    
 }
 
+.card-owner {
+    padding: 2% 5% 0 3%;
+    color:aliceblue
+}
+
+.card-owner p {
+    display: inline;
+}
+
 .card-img-container img {
     display:block;
     width:100%;
@@ -57,10 +66,16 @@
     border-radius: 1rem;
 }
 
+.card-content-container {
+    width: 60%;
+}
+
+
+
 .card-content{
     display: flex;
     flex-direction: column;
-    width: 60%;
+    
  
     padding: 2% 5% 2% 3%;
    
@@ -82,4 +97,9 @@
 .card-content li {
     display:flex;
   
+}
+
+.card-btns-container {
+    display: flex;
+    justify-content: space-evenly;
 }

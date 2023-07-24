@@ -4,26 +4,41 @@
 
     <section class="card-container"  *ngIf="record"   >
 
+
+
         <article class="card" >
-
-          
-
-
             <div  class="card-img-container">
                 <img src={{record.imageUrl}} alt="">
             </div>
           
-            <ul class="card-content">
 
+            <div class="card-content-container">
+
+            <div class="card-owner">
+              <span>   <p>Posted by: {{record._ownerId.email}}</p><p> at: {{ getFormattedDate()}}</p> </span>
+            </div>
+
+            <ul class="card-content">
                 <li><p>Artist:</p> <h3>{{record.artist}}</h3> </li>
                 <li><p>Title:</p> <h3>{{record.title}}</h3> </li>
                 <li><p>Style:</p> <h3>{{record.style}}</h3> </li>
                 <li><p>year:</p> <h3>{{record.year}}</h3> </li>
-
-           
-             
-              
             </ul>
+
+            <div class="card-btns-container">
+
+                <button class="btn-edit">Edit</button>
+                <button class="btn-delete">Delete</button>
+
+            </div>
+
+      
+
+        </div>
+
+
+
+
         </article>
 
     </section> 

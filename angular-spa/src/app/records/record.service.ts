@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Record } from '../shared/types/record';
+
 
 
 @Injectable({
@@ -11,12 +12,17 @@ import { Record } from '../shared/types/record';
 export class RecordService {
   
 
+  private records$$ = new BehaviorSubject<Record[] | undefined>(undefined);
+  public recorsds$ = this.records$$.asObservable();
+
   constructor(private http: HttpClient) { }
+
+   
 
 
  getRecords () {
     const {dataUrl} = environment;
-    return this.http.get< Record[] >(`${dataUrl}/records`);
+    return this.http.get< Record[] >(`${dataUrl}/records`).pipe(tap((record)=> this.records$$.next(record)))
   }
 
   getOneRecord (recordId: string) : Observable<Record> {
