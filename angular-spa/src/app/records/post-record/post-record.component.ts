@@ -25,10 +25,10 @@ export class PostRecordComponent {
   postRecord(form: NgForm){
 
    
-     const user = this.userService.getUser();  
-     let data = {...form.value, user };
+    //  const user = this.userService.getUser();  
+     let data = {...form.value };
 
-    if (form.valid && user) {
+    if (form.valid ) {
 
       this.recordService.postRecord(data).subscribe({
         next: (response) => this.userService.updateUserPosts(response._id),

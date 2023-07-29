@@ -37,9 +37,9 @@ export class RecordService {
     return this.http.post<Record>(`${dataUrl}/post`, data)
   }
 
-  deleteRecord(recordId: string): Observable<Record> {
+  deleteRecord(recordId: string, ownerId: string): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete`)
+    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete/${ownerId}`)
   }
 
 

@@ -35,12 +35,18 @@ export class RecordComponent implements OnInit, OnDestroy{
     });
   }
 
-  deleteRecord(recordId: string): void {
+  deleteRecord(recordId: string, ownerId: string): void {
     const confirmed = window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS RECORD');
     if (confirmed) {
-      this.recordService.deleteRecord(recordId).subscribe({
+      this.recordService.deleteRecord(recordId, ownerId).subscribe({
         next:(response) => console.log(response),
-        error:({ error }) => this.error = error.error,
+        error:({ error }) => {
+          console.log(this.error)
+          this.error = error.error; 
+          this.router.navigate(['/']);
+         
+        
+        },
         complete: () => this.router.navigate(['/catalog'])
       })
 
