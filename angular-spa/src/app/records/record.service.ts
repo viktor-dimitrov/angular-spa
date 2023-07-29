@@ -10,32 +10,38 @@ import { Record } from '../shared/types/record';
   providedIn: 'root'
 })
 export class RecordService {
-  
+
 
   private records$$ = new BehaviorSubject<Record[] | undefined>(undefined);
   public recorsds$ = this.records$$.asObservable();
 
   constructor(private http: HttpClient) { }
 
-   
 
 
- getRecords () {
-    const {dataUrl} = environment;
-    return this.http.get< Record[] >(`${dataUrl}/records`).pipe(tap((record)=> this.records$$.next(record)))
+
+  getRecords() {
+    const { dataUrl } = environment;
+    return this.http.get<Record[]>(`${dataUrl}/records`).pipe(tap((record) => this.records$$.next(record)))
   }
 
-  getOneRecord (recordId: string) : Observable<Record> {
-    const {dataUrl} = environment;
+  getOneRecord(recordId: string): Observable<Record> {
+    const { dataUrl } = environment;
     return this.http.get<Record>(`${dataUrl}/records/${recordId}`);
   }
 
 
 
-postRecord(data: Record): Observable<Record> {
-  const { dataUrl } = environment;
-  return   this.http.post<Record>(`${dataUrl}/post`, data)
-}
+  postRecord(data: Record): Observable<Record> {
+    const { dataUrl } = environment;
+    return this.http.post<Record>(`${dataUrl}/post`, data)
+  }
+
+  deleteRecord(recordId: string): Observable<Record> {
+    const { dataUrl } = environment;
+    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete`)
+  }
+
 
 
 }
