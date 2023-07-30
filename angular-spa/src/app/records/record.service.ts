@@ -42,7 +42,7 @@ export class RecordService {
 
   editRecord(data: Record, recordId: string, ownerId: string): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${ownerId}`, data);
+    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${data._ownerId._id}`, data);
   }
 
 

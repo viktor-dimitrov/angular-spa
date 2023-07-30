@@ -29,10 +29,10 @@ export class PostRecordComponent {
     if (form.valid ) {
 
       this.recordService.postRecord(data).subscribe({
-        next: (response) => this.userService.updateUserPosts(response._id),
+        next: () => this.userService.me().subscribe((response)=> console.log(response), ({error})=> this.error = error.error),
         error: ({ error }) => this.error = error.error,
-        complete: () => this.router.navigate(['/catalog'])
-      })
+        complete: () => {this.router.navigate(['/catalog'])}
+      }) 
     } else {
       console.log('invalid')
       return
