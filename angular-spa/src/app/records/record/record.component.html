@@ -26,7 +26,7 @@
             </ul>
 
             <div class="card-btns-container">
-               <a routerLink="edit" ><button class="btn-edit"  >Edit</button></a> 
+              <button class="btn-edit" (click)="editRecord(record._id)" >Edit</button>
                 <button class="btn-delete" (click)="deleteRecord(record._id, record._ownerId._id)" >Delete</button>
             </div>
 

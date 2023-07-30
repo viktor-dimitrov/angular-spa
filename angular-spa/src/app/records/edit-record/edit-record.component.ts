@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { RecordService } from '../record.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -10,6 +11,7 @@ import { RecordService } from '../record.service';
   styleUrls: ['./edit-record.component.css']
 })
 export class EditRecordComponent implements OnInit{
+  private recordSubscription: Subscription | undefined;
 
   error: string | undefined;
 
@@ -23,6 +25,14 @@ export class EditRecordComponent implements OnInit{
   editRecord(form: NgForm) {
     let data = {...form.value };
     console.log(data)
+  }
+
+
+  ngOnDestroy(): void {
+  
+    if (this.recordSubscription) {
+      this.recordSubscription.unsubscribe();
+    }
   }
 
 

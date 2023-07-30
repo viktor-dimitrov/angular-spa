@@ -40,6 +40,10 @@ export class RecordComponent implements OnInit, OnDestroy{
       
   }
 
+  editRecord(recordId: string): void {
+    this.router.navigate([`/catalog/${recordId}/edit`], { state: { record: this.record } });
+  }
+
 
   deleteRecord(recordId: string, ownerId: string): void {
     const confirmed = window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS RECORD');
@@ -53,12 +57,7 @@ export class RecordComponent implements OnInit, OnDestroy{
         },
         complete: () => this.router.navigate(['/catalog'])
       })
-
     }
-      
-
-
-
   }
 
 
