@@ -5,6 +5,7 @@ import { AuthActivate } from '../core/guards/auth.activate';
 import { PostRecordComponent } from './post-record/post-record.component';
 import { RecordComponent } from './record/record.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { EditRecordComponent } from './edit-record/edit-record.component';
 
 
 
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: ':recordId',
         component: RecordComponent
+      },
+      {
+        path: ':recordId/edit',
+        component: EditRecordComponent
       }]
   },
 

@@ -1,0 +1,75 @@
+<div class="edit">
+
+    <h2>Edit Record</h2>
+
+    <form class="edit-form" #form="ngForm" (ngSubmit)="editRecord(form)">
+
+        <div class="div-in-form">
+            <label for="artist">Artist</label>
+            <input type="text" name="artist" ngModel #inputArtist="ngModel" required >
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="inputArtist.touched">
+                <p *ngIf="inputArtist.errors?.['required']">Artist is required </p>
+            </ng-container>
+        </div>
+
+        <div class="div-in-form">
+            <label for="title">Title</label>
+            <input type="text" name="title" ngModel #inputTitle="ngModel" required >
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="inputTitle.touched">
+                <p *ngIf="inputTitle.errors?.['required']">Title is required</p>
+            </ng-container>
+        </div>
+
+        <div class="div-in-form">
+            <label for="Year">Year Number</label>
+            <input type="number" name="year" ngModel #inputYear="ngModel" required>
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="inputYear.touched">
+                <p *ngIf="inputYear.errors?.['required']">Year is required </p>
+            </ng-container>
+        </div>
+
+        <div class="div-in-form">
+            <label for="style">Style</label>
+            <input type="text" name="style" ngModel #inputStyle="ngModel" required>
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="inputStyle.touched">
+                <p *ngIf="inputStyle.errors?.['required']">Style is required </p>
+            </ng-container>
+        </div>
+
+        <div class="div-in-form">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" name="imageUrl" ngModel #inputImageUrl="ngModel" required minlength="5">
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="inputImageUrl.touched">
+                <p *ngIf="inputImageUrl.errors?.['required']">Image URL is required </p>
+                <p *ngIf="inputImageUrl.errors?.['minlenght']">URL is not valid</p>
+        
+            </ng-container>
+        </div>
+
+        <div class="error">
+            <ng-container *ngIf="error">
+                <p>{{error}}</p>
+            </ng-container>
+        </div>
+
+        <input class="submit" type="submit" value="Save">
+
+    </form>
+
+    
+</div>

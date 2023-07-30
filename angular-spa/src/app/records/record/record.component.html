@@ -11,14 +11,14 @@
                 <img src={{record.imageUrl}} alt="">
             </div>
           
-
             <div class="card-content-container">
 
             <div class="card-owner">
-              <span>   <p>Posted by: {{record._ownerId.email}}</p><p> at: {{ getFormattedDate()}}</p> </span>
+              <span>   <p>Posted by: {{record._ownerId.email}}</p><p> at: {{ time }}</p> </span>
             </div>
 
-            <ul class="card-content">
+    
+            <ul  class="card-content">
                 <li><p>Artist:</p> <h3>{{record.artist}}</h3> </li>
                 <li><p>Title:</p> <h3>{{record.title}}</h3> </li>
                 <li><p>Style:</p> <h3>{{record.style}}</h3> </li>
@@ -26,11 +26,15 @@
             </ul>
 
             <div class="card-btns-container">
-
-                <button class="btn-edit">Edit</button>
+               <a routerLink="edit" ><button class="btn-edit"  >Edit</button></a> 
                 <button class="btn-delete" (click)="deleteRecord(record._id, record._ownerId._id)" >Delete</button>
-
             </div>
+
+       
+
+
+
+
 
       
 

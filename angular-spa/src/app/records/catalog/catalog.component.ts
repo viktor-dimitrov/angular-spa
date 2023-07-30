@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Record} from '../../shared/types/record';
 import { RecordService } from '../record.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent implements OnInit{
+export class CatalogComponent implements OnInit, OnDestroy{
+
+  private recordSubscription: Subscription | undefined;
 
   recordsList: Record[] = [];
 
@@ -20,14 +23,14 @@ export class CatalogComponent implements OnInit{
 constructor(private recordService: RecordService, private router: Router){}
 
 ngOnInit(): void {
-  this.recordService.getRecords().subscribe({
+  this.recordSubscription = this.recordService.getRecords().subscribe({
     next: (posts)=> {
      this.recordsList = posts;
     //  this.isLoading = false;
     },
-    error: (err) => {
+    error: (error) => {
     //  this.isLoading = false;
-     console.error(`Error: ${err}`);
+     console.error(`Error: ${error.error}`);
 
     } 
      
@@ -35,8 +38,14 @@ ngOnInit(): void {
 }
 
 
+ngOnDestroy(): void {
+  
+  if (this.recordSubscription) {
+    this.recordSubscription.unsubscribe();
+  }
+}
 
-
+ 
 
 
 
