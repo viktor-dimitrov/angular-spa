@@ -8,5 +8,6 @@ export interface Record {
     style: string,
     imageUrl: string,
     _createdOn: number,
+    _updatedOn: number,
     _ownerId: User
 }

@@ -35,7 +35,7 @@ export class RecordComponent implements OnInit, OnDestroy{
         console.log(error.error)
         this.error = error.error; 
       },
-      complete: () => {}
+      complete: () => console.log(this.record)
     })
       
   }

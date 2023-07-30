@@ -30,16 +30,19 @@ export class RecordService {
     return this.http.get<Record>(`${dataUrl}/records/${recordId}`);
   }
 
-
-
   postRecord(data: Record): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/post`, data)
+    return this.http.post<Record>(`${dataUrl}/post`, data);
   }
 
   deleteRecord(recordId: string, ownerId: string): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete/${ownerId}`)
+    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete/${ownerId}`);
+  }
+
+  editRecord(data: Record, recordId: string, ownerId: string): Observable<Record> {
+    const { dataUrl } = environment;
+    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${ownerId}`, data);
   }
 
 

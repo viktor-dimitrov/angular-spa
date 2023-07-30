@@ -3,8 +3,9 @@ import { NgForm, NgModel } from '@angular/forms';
 
 import { RecordService } from '../record.service';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Record } from 'src/app/shared/types/record';
+import { UserService } from 'src/app/user/user.service';
 
 
 
@@ -19,16 +20,27 @@ export class EditRecordComponent implements OnInit{
   record: Record | undefined;
   error: string | undefined;
 
-  constructor(private recordService: RecordService, private route: ActivatedRoute){}
+  constructor(private recordService: RecordService, private route: ActivatedRoute, private router: Router, private userService: UserService){}
 
   ngOnInit(): void {
     this.record = history.state.record;
   }
 
 
-  editRecord(form: NgForm) {
+  editRecord(form: NgForm , recordId: string, ownerId: string) {
     let data = {...form.value };
-    console.log(data)
+
+    if (form.valid ) {
+
+      this.recordService.editRecord(data, recordId, ownerId).subscribe({
+        next: (response) => this.userService.updateUserPosts(response._id),
+        error: ({ error }) => this.error = error.error,
+        complete: () => this.router.navigate([`/catalog/${recordId}`])
+      })
+    } else {
+      console.log('invalid')
+      return
+    }
   }
 
 
