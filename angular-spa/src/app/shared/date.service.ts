@@ -12,7 +12,7 @@ export class DateService {
   getFormattedDate(timestamp: number | undefined): string | null {
     if (timestamp) {
       const date = new Date(timestamp);
-      return this.datePipe.transform(date.toISOString(), 'dd-MM-yyyy HH:mm:ss');
+      return this.datePipe.transform(date.toISOString(), 'dd.MM.yyyy | HH:mm');
      
     }
     return null;

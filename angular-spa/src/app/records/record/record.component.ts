@@ -5,6 +5,7 @@ import { Record } from 'src/app/shared/types/record';
 import { DatePipe } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { DateService } from 'src/app/shared/date.service';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-record',
@@ -21,8 +22,21 @@ export class RecordComponent implements OnInit, OnDestroy{
   error: string | undefined;
 
 
+ get isOwner(): boolean {
+  const user = this.userService.getUser();
+  return !!(this.record?._ownerId._id === user?._id)
+ } 
 
-  constructor(private recordService: RecordService, private dateService: DateService, private router: Router, private activatedRoute: ActivatedRoute, private datePipe: DatePipe){}
+
+
+  constructor(
+    private userService: UserService,
+    private recordService: RecordService,
+    private dateService: DateService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit(): void {
     const recordId = this.activatedRoute.snapshot.params['recordId'];

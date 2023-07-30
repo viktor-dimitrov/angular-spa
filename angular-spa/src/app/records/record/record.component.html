@@ -1,6 +1,6 @@
 <div *ngIf="record" class="details">
 
-    <h2>Details</h2>
+    <h1>Details</h1>
 
     <section class="card-container"     >
 
@@ -26,13 +26,21 @@
                 <li><p>Artist:</p> <h3>{{record.artist}}</h3> </li>
                 <li><p>Title:</p> <h3>{{record.title}}</h3> </li>
                 <li><p>Style:</p> <h3>{{record.style}}</h3> </li>
-                <li><p>year:</p> <h3>{{record.year}}</h3> </li>
+                <li><p>Year:</p> <h3>{{record.year}}</h3> </li>
             </ul>
 
-            <div class="card-btns-container">
+           <h1>{{isOwner}}</h1>
+
+            <div *ngIf="isOwner" class="card-btns-container">
               <button class="btn-edit" (click)="editRecord(record._id)" >Edit</button>
                 <button class="btn-delete" (click)="deleteRecord(record._id, record._ownerId._id)" >Delete</button>
             </div>
+
+            <div *ngIf="!isOwner" class="card-btns-container">
+                <button class="btn-edit" >Comment</button>
+                  <button class="btn-delete" >Owner</button>
+            </div>
+
             </div>
         </div>
 
@@ -42,6 +50,8 @@
    
 
     </section> 
+
+ 
 
 
 
