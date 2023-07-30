@@ -16,18 +16,20 @@ export class RecordComponent implements OnInit, OnDestroy{
   private recordSubscription: Subscription | undefined;
 
   record: Record | undefined;
-  time: string | null = null;
+  createdOn: string | null = null;
+  updatedOn: string | null = null;
   error: string | undefined;
 
 
 
-  constructor(private recordService: RecordService, private dateServise: DateService, private router: Router, private activatedRoute: ActivatedRoute, private datePipe: DatePipe){}
+  constructor(private recordService: RecordService, private dateService: DateService, private router: Router, private activatedRoute: ActivatedRoute, private datePipe: DatePipe){}
 
   ngOnInit(): void {
     const recordId = this.activatedRoute.snapshot.params['recordId'];
     this.recordSubscription = this.recordService.getOneRecord(recordId).subscribe({
       next: (response) => {
-        this.time = this.dateServise.getFormattedDate(response?._createdOn);
+        this.createdOn = this.dateService.getFormattedDate(response?._createdOn);
+        this.updatedOn = this.dateService.getFormattedDate(response?._updatedOn);
         this.record = response
       
       },

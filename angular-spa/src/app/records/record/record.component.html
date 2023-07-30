@@ -1,23 +1,27 @@
-<div  class="details">
+<div *ngIf="record" class="details">
 
     <h2>Details</h2>
 
-    <section class="card-container"  *ngIf="record"   >
+    <section class="card-container"     >
 
-
-
+ 
         <article class="card" >
+
+            <div class="card-created-info">
+               <p>Posted at: {{ createdOn }}</p>
+               <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p>
+            </div>
+
+       
+
+            <div class="card-data-container">
+        
             <div  class="card-img-container">
                 <img src={{record.imageUrl}} alt="">
             </div>
           
             <div class="card-content-container">
 
-            <div class="card-owner">
-              <span>   <p>Posted by: {{record._ownerId.email}}</p><p> at: {{ time }}</p> </span>
-            </div>
-
-    
             <ul  class="card-content">
                 <li><p>Artist:</p> <h3>{{record.artist}}</h3> </li>
                 <li><p>Title:</p> <h3>{{record.title}}</h3> </li>
@@ -29,21 +33,13 @@
               <button class="btn-edit" (click)="editRecord(record._id)" >Edit</button>
                 <button class="btn-delete" (click)="deleteRecord(record._id, record._ownerId._id)" >Delete</button>
             </div>
-
-       
-
-
-
-
-
-      
-
+            </div>
         </div>
 
 
-
-
         </article>
+
+   
 
     </section> 
 
