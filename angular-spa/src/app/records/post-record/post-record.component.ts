@@ -24,8 +24,6 @@ export class PostRecordComponent {
 
   postRecord(form: NgForm){
 
-   
-    //  const user = this.userService.getUser();  
      let data = {...form.value };
 
     if (form.valid ) {
