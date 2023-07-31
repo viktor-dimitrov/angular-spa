@@ -2,7 +2,7 @@
 
     <h2>Edit Record</h2>
 
-    <form  *ngIf="record" class="edit-form" #form="ngForm" (ngSubmit)="editRecord(form, record._id, record._ownerId._id)"> 
+    <form  *ngIf="record" class="edit-form" #form="ngForm" (ngSubmit)="editRecord(form, record._id)"> 
 
         <div class="div-in-form">
             <label for="artist">Artist</label>

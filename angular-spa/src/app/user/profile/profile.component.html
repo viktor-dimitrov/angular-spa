@@ -52,10 +52,9 @@
             </ul>
 
             <div class="card-btns-container">
-                <button class="btn-edit" >Edit</button>
+                <button class="btn-edit" (click)="editRecord(record._id, record)" >Edit</button>
                   <button class="btn-delete" (click)="onDeleteRecord(record._id, user._id)"  >Delete</button>
               </div>
-
             </div>
         </div>
 

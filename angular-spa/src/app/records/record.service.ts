@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Record } from '../shared/types/record';
+import { UserService } from '../user/user.service';
 
 
 
@@ -15,7 +16,7 @@ export class RecordService {
   private records$$ = new BehaviorSubject<Record[] | undefined>(undefined);
   public recorsds$ = this.records$$.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
 
 
@@ -40,9 +41,9 @@ export class RecordService {
     return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete/${ownerId}`);
   }
 
-  editRecord(data: Record, recordId: string, ownerId: string): Observable<Record> {
+  editRecord(data: Record, recordId: string): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${ownerId}`, data);
+    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${this.userService.user?._id}`, data);
   }
 
 

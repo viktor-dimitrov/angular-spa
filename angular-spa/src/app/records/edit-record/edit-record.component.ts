@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Record } from 'src/app/shared/types/record';
 import { UserService } from 'src/app/user/user.service';
+import { Location } from '@angular/common';
 
 
 
@@ -19,26 +20,31 @@ export class EditRecordComponent implements OnInit{
   private recordSubscription: Subscription | undefined;
   record: Record | undefined;
   error: string | undefined;
-
-  constructor(private recordService: RecordService, private route: ActivatedRoute, private router: Router, private userService: UserService){}
+  backUrl: string | undefined = undefined;
+  
+  constructor(
+    private recordService: RecordService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private location: Location,
+  ) { }
 
   ngOnInit(): void {
-
     this.record = history.state.record;
-    console.log(this.record)
+    const path = this.location.path();
+    console.log(path)
   }
 
-
-  editRecord(form: NgForm , recordId: string, ownerId: string) {
+  editRecord(form: NgForm , recordId: string) {
     let data = {...form.value };
 
     if (form.valid ) {
-
-      this.recordService.editRecord(data, recordId, ownerId).subscribe({
+    this.recordSubscription = this.recordService.editRecord(data, recordId).subscribe({
         next: () => this.userService.me(),
         error: ({ error }) => this.error = error.error,
-        complete: () => this.router.navigate([`/catalog/${recordId}`])
-      })
+        complete: () => { }
+    })
     } else {
       console.log('invalid')
       return

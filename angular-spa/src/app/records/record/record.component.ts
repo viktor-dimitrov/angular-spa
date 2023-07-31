@@ -52,7 +52,6 @@ export class RecordComponent implements OnInit, OnDestroy{
       },
       complete: () => {}
     })
-      
   }
 
   editRecord(recordId: string): void {
