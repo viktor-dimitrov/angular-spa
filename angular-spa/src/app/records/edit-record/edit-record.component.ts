@@ -35,7 +35,7 @@ export class EditRecordComponent implements OnInit{
     if (form.valid ) {
 
       this.recordService.editRecord(data, recordId, ownerId).subscribe({
-        next: (response) => console.log(response),
+        next: () => this.userService.me(),
         error: ({ error }) => this.error = error.error,
         complete: () => this.router.navigate([`/catalog/${recordId}`])
       })
