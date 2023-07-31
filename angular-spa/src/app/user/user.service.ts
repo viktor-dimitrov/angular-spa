@@ -44,17 +44,6 @@ export class UserService {
     return user
   }
 
-  // updateUserPosts(recordId: string) : void {
-
-  //   if (this.user?.myPosts) {
-  //     this.user.myPosts.push(recordId);
-  //     this.user$$.next(this.user);
-  //     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
-  //   }
-
-  // }
-
-
   register(userData: User): Observable<User> {
     const { authUrl } = environment;
     return this.http.post<User>(`${authUrl}/register`, userData).pipe(tap((user)=>this.user$$.next(user)));
@@ -65,18 +54,20 @@ export class UserService {
     return this.http.post<User>(`${authUrl}/login`, userData).pipe(tap((user)=>this.user$$.next(user)));
   }
 
-  me(): Observable<User> {
-    const { authUrl } = environment;
-    return this.http.get<User>(`${authUrl}/me`).pipe(tap((user)=>{
-      this.user$$.next(user);
-      this.setLsUser(user);
-    }));
-  }
-
   logout(): void {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
+
+  me(): void {
+    const { authUrl } = environment;
+      this.http.get<User>(`${authUrl}/me`).pipe(tap((user)=>{
+      this.user$$.next(user);
+      this.setLsUser(user);
+    })).subscribe();
+  }
+
+
 
 
 }

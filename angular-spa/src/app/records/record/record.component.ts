@@ -45,13 +45,12 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.createdOn = this.dateService.getFormattedDate(response?._createdOn);
         this.updatedOn = this.dateService.getFormattedDate(response?._updatedOn);
         this.record = response
-      
       },
       error: ({error}) => {
         console.log(error.error)
         this.error = error.error; 
       },
-      complete: () => console.log(this.record)
+      complete: () => {}
     })
       
   }

@@ -27,14 +27,13 @@ export class PostRecordComponent {
      let data = {...form.value };
 
     if (form.valid ) {
-
       this.recordService.postRecord(data).subscribe({
-        next: () => this.userService.me().subscribe((response)=> console.log(response), ({error})=> this.error = error.error),
+        next: () => this.userService.me(),
         error: ({ error }) => this.error = error.error,
         complete: () => {this.router.navigate(['/catalog'])}
       }) 
     } else {
-      console.log('invalid')
+      this.error = "Invalid"
       return
     }
 
