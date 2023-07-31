@@ -1,1 +1,63 @@
-<p>profile works!</p>
+<div  *ngIf="user" class="details">
+
+    <h1>Details</h1>
+
+    <section class="card-container"     >
+
+        <article class="card" >
+
+            <div class="card-created-info">
+            </div>
+
+            <div class="card-data-container">
+        
+            <div  class="card-img-container">
+                <img src="assets/images/user.jpg" alt="">
+            </div>
+          
+            <div class="card-content-container">
+
+            <ul  class="card-content">
+                <li><p>Username</p> <h3>{{user.username}}</h3> </li>
+                <li><p>Email</p> <h3>{{user.email}}</h3> </li>
+                <li><p>Phone</p> <h3>{{user.username}}</h3> </li>
+                <li><p>Records</p> <h3>{{user.myPosts?.length}}</h3> </li>
+            </ul>
+            </div>
+        </div>
+        </article>
+
+
+        <ng-container *ngIf="user.myPosts">
+
+        
+
+        <article  *ngFor="let record of user.myPosts" class="card" >
+
+            <div class="card-created-info">
+            </div>
+
+            <div class="card-data-container">
+        
+            <div  class="card-img-container">
+                <img src={{record.imageUrl}} alt="">
+            </div>
+          
+            <div class="card-content-container">
+
+            <ul  class="card-content">
+                <li><p>Artist</p> <h3> {{record.artist}} </h3> </li>
+                <li><p>Title</p> <h3>{{record.title}} </h3> </li>
+                <li><p>Style</p> <h3>{{record.style}} </h3> </li>
+            </ul>
+
+            </div>
+        </div>
+
+        </article>
+
+    </ng-container>
+
+    </section> 
+
+</div>
