@@ -51,6 +51,11 @@
                 <li><p>Style</p> <h3>{{record.style}} </h3> </li>
             </ul>
 
+            <div class="card-btns-container">
+                <button class="btn-edit" >Edit</button>
+                  <button class="btn-delete" (click)="onDeleteRecord(record._id, user._id)"  >Delete</button>
+              </div>
+
             </div>
         </div>
 

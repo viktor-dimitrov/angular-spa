@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { RecordComponent } from '../records/record/record.component';
 
 
 
@@ -21,7 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     UserRoutingModule,
     FormsModule,
     SharedModule,
-  
-  ]
+  ],
+  providers: [RecordComponent]
 })
 export class UserModule { }
