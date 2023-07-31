@@ -23,7 +23,9 @@ export class EditRecordComponent implements OnInit{
   constructor(private recordService: RecordService, private route: ActivatedRoute, private router: Router, private userService: UserService){}
 
   ngOnInit(): void {
+
     this.record = history.state.record;
+    console.log(this.record)
   }
 
 
