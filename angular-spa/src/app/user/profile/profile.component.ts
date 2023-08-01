@@ -20,9 +20,12 @@ export class ProfileComponent implements OnInit {
     private recordComponent: RecordComponent,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location
   ) { }
 
 ngOnInit(): void {
+
+  console.log(this.location.path())
   const user = this.userService.getUser();
   this.user = user;
   console.log(user)

@@ -39,6 +39,8 @@ export class RecordComponent implements OnInit, OnDestroy{
   ) { }
 
   ngOnInit(): void {
+
+  console.log(this.location.path())
     const recordId = this.activatedRoute.snapshot.params['recordId'];
     this.recordSubscription = this.recordService.getOneRecord(recordId).subscribe({
       next: (response) => {
@@ -46,8 +48,8 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.updatedOn = this.dateService.getFormattedDate(response?._updatedOn);
         this.record = response
       },
-      error: ({ error }) => {
-        this.error = error.error;
+      error: ({error}) => {
+        this.error = error.error; 
         this.router.navigate(['/pageNotFound']);
       },
       complete: () => { }
@@ -65,7 +67,13 @@ export class RecordComponent implements OnInit, OnDestroy{
       this.recordSubscription = this.recordService.deleteRecord(recordId, ownerId).pipe(
         tap(() => {
           this.userService.me().subscribe({
-            complete: () => this.location.back()
+            complete: () => {
+              if(this.location.path() !== '/profile') {
+                this.location.back()
+              } else {
+                window.location.reload()
+              }
+            } 
           })
         }))
         .subscribe({
