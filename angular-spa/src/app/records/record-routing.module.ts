@@ -25,7 +25,8 @@ const routes: Routes = [
       },
       {
         path: ':recordId/edit',
-        component: EditRecordComponent
+        component: EditRecordComponent,
+        canActivate: [AuthActivate]
       }]
   },
 

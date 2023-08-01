@@ -46,11 +46,11 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.updatedOn = this.dateService.getFormattedDate(response?._updatedOn);
         this.record = response
       },
-      error: ({error}) => {
-        console.log(error.error)
-        this.error = error.error; 
+      error: ({ error }) => {
+        this.error = error.error;
+        this.router.navigate(['/pageNotFound']);
       },
-      complete: () => {}
+      complete: () => { }
     })
   }
 

@@ -33,8 +33,10 @@ export class PostRecordComponent {
           })
         })
       ).subscribe({
-        error: ({ error }) => this.error = error.error,
-
+        error: ({ error }) => {
+          this.error = error.error,
+          this.router.navigate(['/pageNotFound'])
+        }
       })
     } else {
 
