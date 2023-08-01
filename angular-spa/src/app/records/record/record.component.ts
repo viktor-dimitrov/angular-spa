@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RecordService } from '../record.service';
 import { Record } from 'src/app/shared/types/record';
-import { DatePipe } from '@angular/common';
-import { Subscription } from 'rxjs';
+import { DatePipe, Location } from '@angular/common';
+import { Subscription, tap } from 'rxjs';
 import { DateService } from 'src/app/shared/date.service';
 import { UserService } from 'src/app/user/user.service';
 
@@ -28,14 +28,14 @@ export class RecordComponent implements OnInit, OnDestroy{
  } 
 
 
-
   constructor(
     private userService: UserService,
     private recordService: RecordService,
     private dateService: DateService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -62,25 +62,20 @@ export class RecordComponent implements OnInit, OnDestroy{
   deleteRecord(recordId: string, ownerId: string): void {
     const confirmed = window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS RECORD');
     if (confirmed) {
-      this.recordSubscription = this.recordService.deleteRecord(recordId, ownerId).subscribe({
-        next:() => this.userService.me(),
-        error:({ error }) => {
-          console.log(error.error)
-          this.error = error.error; 
-          this.router.navigate(['/']);
-        },
-        complete: () => this.router.navigate(['/catalog'])
-      })
+      this.recordSubscription = this.recordService.deleteRecord(recordId, ownerId).pipe(
+        tap(() => {
+          this.userService.me().subscribe({
+            complete: () => this.location.back()
+          })
+        }))
+        .subscribe({
+          error: ({ error }) => this.error = error.error,
+        })
     }
   }
 
 
-
-  
-
-
   ngOnDestroy(): void {
-  
     if (this.recordSubscription) {
       this.recordSubscription.unsubscribe();
     }

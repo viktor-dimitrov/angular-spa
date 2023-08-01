@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from 'src/app/shared/types/user';
 import { Record } from 'src/app/shared/types/record';
-import { RecordService } from 'src/app/records/record.service';
 import { RecordComponent } from 'src/app/records/record/record.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -15,8 +14,6 @@ import { Location } from '@angular/common';
 export class ProfileComponent implements OnInit {
 
    user: User | undefined = undefined;
-   path: string | undefined = undefined;
-  
 
   constructor(
     private userService: UserService,
@@ -28,15 +25,16 @@ export class ProfileComponent implements OnInit {
 ngOnInit(): void {
   const user = this.userService.getUser();
   this.user = user;
+  console.log(user)
 }
 
 
 editRecord(recordId: string, record: Record): void {
-  this.router.navigate([`/profile/${recordId}/edit`], { state: {record: record} })
+  this.router.navigate([`/profile/${recordId}/edit`], { state: {record: record} });
 }
 
 onDeleteRecord(recordId: string, ownerId: string): void {
-  this.recordComponent.deleteRecord(recordId, ownerId)
+  this.recordComponent.deleteRecord(recordId, ownerId);
 }
 
 

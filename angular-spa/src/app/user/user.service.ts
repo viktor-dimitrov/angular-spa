@@ -59,12 +59,12 @@ export class UserService {
     localStorage.removeItem(this.USER_KEY);
   }
 
-  me(): void {
+  me(): Observable<User> {
     const { authUrl } = environment;
-      this.http.get<User>(`${authUrl}/me`).pipe(tap((user)=>{
+     return this.http.get<User>(`${authUrl}/me`).pipe(tap((user)=>{
       this.user$$.next(user);
       this.setLsUser(user);
-    })).subscribe();
+    }))
   }
 
 
