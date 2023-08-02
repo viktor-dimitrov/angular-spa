@@ -68,11 +68,7 @@ export class RecordComponent implements OnInit, OnDestroy{
         tap(() => {
           this.userService.me().subscribe({
             complete: () => {
-              if(this.location.path() !== '/profile') {
-                this.location.back()
-              } else {
-                window.location.reload()
-              }
+              this.location.back();
             } 
           })
         }))
@@ -81,7 +77,6 @@ export class RecordComponent implements OnInit, OnDestroy{
         })
     }
   }
-
 
   ngOnDestroy(): void {
     if (this.recordSubscription) {
