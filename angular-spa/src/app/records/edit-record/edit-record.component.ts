@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Record } from 'src/app/shared/types/record';
 import { UserService } from 'src/app/user/user.service';
 import { Location } from '@angular/common';
+import { User } from 'src/app/shared/types/user';
 
 
 
@@ -21,7 +22,6 @@ export class EditRecordComponent implements OnInit{
   record: Record | undefined;
   error: string | undefined;
 
-  
   constructor(
     private recordService: RecordService,
     private route: ActivatedRoute,
@@ -32,7 +32,6 @@ export class EditRecordComponent implements OnInit{
 
   ngOnInit(): void {
     this.record = history.state.record;
-
   }
 
   editRecord(form: NgForm, recordId: string) {

@@ -29,9 +29,7 @@ private recordSubscription: Subscription | undefined;
   ) { }
 
 ngOnInit(): void {
- this.recordSubscription = this.userService.me().subscribe((user) => {
-    this.user = user
-})
+    this.user = this.userService.user;
 }
 
 editRecord(recordId: string, record: Record): void {

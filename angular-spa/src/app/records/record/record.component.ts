@@ -23,8 +23,8 @@ export class RecordComponent implements OnInit, OnDestroy{
 
 
  get isOwner(): boolean {
-  const user = this.userService.getUser();
-  return !!(this.record?._ownerId._id === user?._id)
+  const user = this.userService.user;
+  return !!(this.record?._ownerId?._id === user?._id)
  } 
 
 
@@ -40,7 +40,6 @@ export class RecordComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
 
-  console.log(this.location.path())
     const recordId = this.activatedRoute.snapshot.params['recordId'];
     this.recordSubscription = this.recordService.getOneRecord(recordId).subscribe({
       next: (response) => {
