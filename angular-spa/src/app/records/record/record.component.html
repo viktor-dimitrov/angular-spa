@@ -2,17 +2,16 @@
 
     <h1>Details</h1>
 
+
+
     <section class="card-container"     >
 
- 
         <article class="card" >
 
             <div class="card-created-info">
                <p>Posted at: {{ createdOn }}</p>
                <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p>
             </div>
-
-       
 
             <div class="card-data-container">
         
@@ -29,20 +28,46 @@
                 <li><p>Year:</p> <h3>{{record.year}}</h3> </li>
             </ul>
 
+            <ng-container  *ngIf="isLoggedIn" >
+
             <div *ngIf="isOwner" class="card-btns-container">
               <button class="btn-edit" (click)="editRecord(record._id)" >Edit</button>
                 <button class="btn-delete" (click)="deleteRecord(record._id, record._ownerId._id)" >Delete</button>
             </div>
 
-            <div *ngIf="!isOwner" class="card-btns-container">
-                <button class="btn-edit" >Comment</button>
-                  <button class="btn-delete" >Owner</button>
-            </div>
+        
+
+             <ul *ngIf="!isOwner"  class="card-content posted-by">
+               <li><p> Posted by: </p></li> 
+            </ul>
+            <article class="owner">
+
+            <div *ngIf="!isOwner" class="card-owner">
+
+                <ul class="card-content owner-info-container">
+                    <li> <p>Name:</p> <h3>{{record._ownerId.username}}</h3></li>
+                    <li> <p>Email:</p> <h3>{{record._ownerId.email}}</h3></li>
+                    <li> <p>Phone:</p> <h3>{{record._ownerId.phone}}</h3></li>
+                    <li> <p>Posts:</p> <h3>{{record._ownerId.myPosts?.length}}</h3> </li>
+                </ul>
+
+               
+
+                <div class="owner-img-container">
+                    <img src="assets/images/user.jpg" alt="">
+                </div>
+        
+             </div>
+
+            </article>
+        </ng-container>
 
             </div>
+
+        
         </div>
 
-
+     
         </article>
 
    

@@ -27,6 +27,10 @@ export class RecordComponent implements OnInit, OnDestroy{
   return !!(this.record?._ownerId?._id === user?._id)
  } 
 
+ get isLoggedIn(): boolean {
+  return this.userService.isLogged
+}
+
 
   constructor(
     private userService: UserService,
@@ -51,8 +55,11 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.error = error.error; 
         this.router.navigate(['/pageNotFound']);
       },
-      complete: () => { }
+      complete: () => { console.log(this.record)}
     })
+
+
+    
   }
 
   editRecord(recordId: string): void {
