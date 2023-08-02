@@ -56,9 +56,8 @@ export class RecordComponent implements OnInit, OnDestroy{
   }
 
   editRecord(recordId: string): void {
-    this.router.navigate([`/catalog/${recordId}/edit`], { state: { record: this.record } });
+    this.router.navigate([`/catalog/${recordId}/edit`], { state: { record: this.record, ownerId: this.record?._ownerId._id } });
   }
-
 
   deleteRecord(recordId: string, ownerId: string): void {
     const confirmed = window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS RECORD');

@@ -21,6 +21,7 @@ export class EditRecordComponent implements OnInit{
   private recordSubscription: Subscription | undefined;
   record: Record | undefined;
   error: string | undefined;
+  userId: string | undefined;
 
   constructor(
     private recordService: RecordService,
@@ -28,10 +29,19 @@ export class EditRecordComponent implements OnInit{
     private router: Router,
     private userService: UserService,
     private location: Location,
-  ) { }
+  ) { 
+
+    this.record = history.state.record;
+    this.userId = this.userService.user?._id;
+    const ownerId = history.state.ownerId;
+
+    if( this.userId !== ownerId ) {
+        this.router.navigate(['/pageNotFound'])
+    }
+  }
 
   ngOnInit(): void {
-    this.record = history.state.record;
+  
   }
 
   editRecord(form: NgForm, recordId: string) {

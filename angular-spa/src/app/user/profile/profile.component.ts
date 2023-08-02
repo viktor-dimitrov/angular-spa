@@ -29,11 +29,12 @@ private recordSubscription: Subscription | undefined;
   ) { }
 
 ngOnInit(): void {
-    this.user = this.userService.user;
+    this.user = this.userService.user;  
 }
 
 editRecord(recordId: string, record: Record): void {
-  this.router.navigate([`/profile/${recordId}/edit`], { state: {record: record} });
+  
+  this.router.navigate([`/profile/${recordId}/edit`], { state: {record: record, ownerId: record._ownerId} });
 }
 
 deleteRecord(recordId: string, ownerId: string): void {
