@@ -33,7 +33,7 @@ export class RecordService {
 
   postRecord(data: Record): Observable<Record> {
     const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/post`, data);
+    return this.http.post<Record>(`${dataUrl}/records`, data);
   }
 
   deleteRecord(recordId: string, ownerId: string): Observable<Record> {
