@@ -36,7 +36,7 @@ export class CommentsComponent implements OnInit, OnDestroy {
     this.commentsSubscription = this.commentsService.getComments(this.recordId).subscribe({
       next: (response: Comment[]) => {  this.comments = response},
       error: ({error}) => {console.log(error)},
-      complete: ()=> console.log(this.comments)
+      complete: ()=> {}
     })
   }
 
@@ -44,9 +44,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
   postComment(form: NgForm){
     const data = { ...form.value, recordId: this.recordId };
     this.commentsSubscription = this.commentsService.postComment(data).subscribe({
-      next: (response)=>{ this.comments = [ ...this.comments, response] },
+      next: (response: Comment)=>{ this.comments = [ ...this.comments, response] },
       error: ({error})=> console.log(error),
       complete: ()=> {
+        console.log(this.comments)
         form.resetForm();
       }
     }
