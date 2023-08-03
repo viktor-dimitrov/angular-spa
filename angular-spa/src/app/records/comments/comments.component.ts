@@ -1,38 +1,48 @@
-import { Component, Input, OnDestroy, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordService } from '../record.service';
 import { NgForm, NgModel } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { Subscription, tap } from 'rxjs';
 import { CommentsService } from './comments.service';
+import { Comment } from 'src/app/shared/types/comment';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnDestroy {
+export class CommentsComponent implements OnInit, OnDestroy {
 
   private commentsSubscription: Subscription | undefined;
 
-  @Input() recordId: string | undefined = undefined;
+  @Input() recordId: string  = '';
   @ViewChild('form', { static: false }) form!: NgForm;
+
+  comments: Comment[] | [] = [];
 
 
   constructor( private commentsService: CommentsService ){}
 
+  ngOnInit(): void {
+    this.commentsSubscription = this.commentsService.getComments(this.recordId).subscribe({
+      next: (response: Comment[]) => {  this.comments = response},
+      error: ({error}) => {console.log(error)},
+      complete: ()=> console.log(this.comments)
+    })
+  }
+
 
   postComment(form: NgForm){
     const data = { ...form.value, recordId: this.recordId };
-
     this.commentsSubscription = this.commentsService.postComment(data).subscribe({
-      next: (response)=>{ console.log(response)},
+      next: (response)=>{ this.comments = [ ...this.comments, response] },
       error: ({error})=> console.log(error),
-      complete: ()=> form.resetForm()
+      complete: ()=> {
+        form.resetForm();
+      }
     }
     )
- 
-    
   }
 
 
