@@ -1,11 +1,10 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { RecordService } from '../record.service';
 import { NgForm, NgModel } from '@angular/forms';
 import { UserService } from 'src/app/user/user.service';
 import { Subscription, tap } from 'rxjs';
 import { CommentsService } from './comments.service';
 import { Comment } from 'src/app/shared/types/comment';
+import { DateService } from 'src/app/shared/date.service';
 
 @Component({
   selector: 'app-comments',
@@ -21,8 +20,17 @@ export class CommentsComponent implements OnInit, OnDestroy {
 
   comments: Comment[] | [] = [];
 
+  
+   get isLoggedIn(): boolean {
+    return this.userService.isLogged
+  }
 
-  constructor( private commentsService: CommentsService ){}
+  formattedDate(timestamp: number): string | null {
+    return this.dateService.getFormattedDate(timestamp)
+  }
+
+
+  constructor( private commentsService: CommentsService, private userService: UserService , private dateService: DateService){}
 
   ngOnInit(): void {
     this.commentsSubscription = this.commentsService.getComments(this.recordId).subscribe({

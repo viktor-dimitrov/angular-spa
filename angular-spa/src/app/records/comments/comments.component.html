@@ -1,4 +1,6 @@
-<section class="coments-container card-container">
+<section *ngIf="isLoggedIn" class=" comments-container card-container  ">
+
+ 
 
     <div class="comments-form-container card ">
         <form class="form"  #form="ngForm" (ngSubmit)="postComment(form )" >
@@ -6,28 +8,28 @@
 
             <input type="submit" value="Post Comment">
         </form>
-
     </div>
 
+
+
+<ng-container>
+    <h2>Comments</h2>
+
+<ng-container   *ngFor="let comment of comments">
     <div class="card">
         <div class="card-created-info">
-            <p>Popo  07.08.2023</p>
+            <p> - <strong>{{comment._ownerId.username}}</strong> - |  {{formattedDate(comment._createdOn)}} </p>
             <!-- <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p> -->
          </div>
          <div class="comment-text">
-            <p>werwrtwewefwefmkwifmwiomfwiomwiomcwiocmwiorcmwiorc</p>
+            <p>{{comment.text }}</p>
          </div>
     </div>
+</ng-container>
 
 
-    <div class="card">
-        <div class="card-created-info">
-            <p>Popo  07.08.2023</p>
-            <!-- <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p> -->
-         </div>
-         <div class="comment-text">
-            <p>werwrtwewefwefmkwifmwiomfwiomwiomcwiocmwiorcmwiorc</p>
-         </div>
-    </div>
+
+</ng-container>
+
 
 </section>
