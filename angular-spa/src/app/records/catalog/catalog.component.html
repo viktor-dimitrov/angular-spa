@@ -1,13 +1,18 @@
+
+
 <div  class="catalog" >
 
+   
     <h2>Catalog</h2>
 
-    <section class="card-container"    >
 
-       
+ <div *ngIf="isLoading" >
+    <app-loader/>
+ </div>
+
+    <section *ngIf="!isLoading" class="card-container"    >
+
         <article class="card"  *ngFor="let record of recordsList"   >
-
-           
             <div  class="card-img-container">
                 <img src={{record.imageUrl}} alt="">
             </div>

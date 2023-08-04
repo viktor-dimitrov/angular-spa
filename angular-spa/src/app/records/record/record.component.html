@@ -2,9 +2,11 @@
 
     <h1>Details</h1>
 
+    <div *ngIf="isLoading" >
+        <app-loader/>
+     </div>
 
-
-    <section class="card-container"     >
+    <section *ngIf="!isLoading" class="card-container"     >
 
         <article class="card" >
 

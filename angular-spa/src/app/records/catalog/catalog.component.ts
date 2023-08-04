@@ -16,6 +16,9 @@ export class CatalogComponent implements OnInit, OnDestroy{
   private recordSubscription: Subscription | undefined;
 
   recordsList: Record[] = [];
+  isLoading: boolean = true;
+ 
+  
 
 
 
@@ -26,10 +29,10 @@ ngOnInit(): void {
   this.recordSubscription = this.recordService.getRecords().subscribe({
     next: (posts)=> {
      this.recordsList = posts;
-    //  this.isLoading = false;
+     this.isLoading = false;
     },
     error: (error) => {
-    //  this.isLoading = false;
+     this.isLoading = false;
      console.error(`Error: ${error.error}`);
 
     } 

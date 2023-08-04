@@ -20,6 +20,7 @@ export class RecordComponent implements OnInit, OnDestroy{
   createdOn: string | null = null;
   updatedOn: string | null = null;
   error: string | undefined;
+  isLoading: boolean = true;
 
 
  get isOwner(): boolean {
@@ -49,11 +50,13 @@ export class RecordComponent implements OnInit, OnDestroy{
       next: (response) => {
         this.createdOn = this.dateService.getFormattedDate(response?._createdOn);
         this.updatedOn = this.dateService.getFormattedDate(response?._updatedOn);
-        this.record = response
+        this.record = response;
+        this.isLoading = false;
       },
       error: ({error}) => {
         this.error = error.error; 
         this.router.navigate(['/pageNotFound']);
+        this.isLoading = false;
       },
       complete: () => { console.log(this.record)}
     })
