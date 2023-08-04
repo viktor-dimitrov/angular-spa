@@ -33,7 +33,7 @@ ngOnInit(): void {
     },
     error: (error) => {
      this.isLoading = false;
-     console.error(`Error: ${error.error}`);
+     console.error(`Error: ${error}`);
 
     } 
      

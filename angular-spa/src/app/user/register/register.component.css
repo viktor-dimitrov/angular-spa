@@ -1,4 +1,15 @@
 
+:host {
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(233, 236, 88, 0.329);
+    border-radius: 2rem;
+    padding: 2% ;
+}
 
 .register {
     font-family: monospace, serif;

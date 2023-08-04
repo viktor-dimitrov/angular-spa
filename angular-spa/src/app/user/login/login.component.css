@@ -1,4 +1,16 @@
 
+:host {
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8fd2ef73;
+    border-radius: 2rem;
+    padding: 2% ;
+}
+
 
 .login {
     font-family: monospace, serif;
@@ -10,7 +22,7 @@
     background-color: #8fd2ef;
     border-radius: 10%;
     padding: 2rem;
-    margin: 2rem auto 12.125rem auto;
+    /* margin: 2rem auto 12.125rem auto; */
 
 }
 

@@ -20,8 +20,10 @@ export class RegisterComponent {
   register(form: NgForm): void {
     const data = {...form.value};
 
-    if (form.valid && (form.value.password == form.value.repassword)) {
+    if (form.valid && (data.password === data.repassword)) {
 
+   
+    if (form.valid && (form.value.password == form.value.repassword)) {
       this.userService.register(data).subscribe({
         next: (response) => this.userService.setLsUser(response),
         error: ({ error }) => this.error = error.error,
@@ -30,6 +32,10 @@ export class RegisterComponent {
     } else {
       return
     }
+
+    }
+
+
   }
 
 }
