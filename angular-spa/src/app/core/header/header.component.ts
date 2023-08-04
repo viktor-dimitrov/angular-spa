@@ -17,12 +17,16 @@ export class HeaderComponent {
     return this.userService.isLogged
   }
 
- 
 
   logout(): void {
     this.userService.logout();
     this.router.navigate(['/login'])
   }
+
+  goHome(): void {
+    this.router.navigate(['/']);
+  }
+
 
 }
 
