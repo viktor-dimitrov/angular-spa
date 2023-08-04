@@ -8,7 +8,9 @@
     width: 100%;
     min-height: 100vh;
     height: auto;
-    font: normal 20px/1.5 monospace, serif;
+    /* font: normal 16px/1.5 Ultra, serif;
+    letter-spacing: 0.2em; */
+
 }
 
 .background {

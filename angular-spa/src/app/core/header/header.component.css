@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 
 .header{
  
@@ -23,7 +25,7 @@
 }
 
 .header a, p {
-    font-family: monospace, serif;
+    font-family: 'Righteous', cursive;
     display: block;
     text-decoration: none;
     color:azure;
