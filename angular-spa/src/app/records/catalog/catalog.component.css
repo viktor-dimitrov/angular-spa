@@ -3,6 +3,7 @@
     width: 90%;
     margin: 2rem auto;
     justify-content: center;
+ 
 }
 
 .catalog {
@@ -13,7 +14,7 @@
     background-color: rgba(52, 169, 247, 0.329);
     border-radius: 2rem;
     padding: 2% ;
-    font-family: monospace, serif;
+    font-family: 'Righteous', cursive;
 }
 
 .card-container {
@@ -29,20 +30,21 @@
 
 .card {
 
-    width: 15rem;
-    height: 20rem;
+    width: 15em;
+    height: 21em;
     display: inline-block;
     background-color: rgb(31, 32, 32);
     border: 1px solid #84d0f5;
     margin-bottom: 2rem;
     border-radius: 1rem;
-    overflow: hidden;
+    overflow:hidden;
 
 }
 
 .card-img-container {
     width: 100%;
-    height: 70%;
+    height: 65%;
+ 
 }
 
 .card-img-container img {
@@ -56,5 +58,22 @@
     text-align: center;
     padding: auto;
     color: aliceblue;
+    padding: 0.5em;
    
+}
+
+.view {
+    display: inline-block;
+    text-decoration: none;
+    color: aliceblue;
+    margin: 0.1em 0 0.5em 0;
+    border: 1px solid #84d0f5;
+    padding:0.1em 1em;
+    border-radius: 0.2em;
+    
+}
+
+.view:hover {
+    background-color: #84d0f5;
+    color:black
 }
