@@ -28,4 +28,9 @@ export class CommentsService {
     return this.http.post<Comment>(`${dataUrl}/comments`, data);
   }
 
+  deleteComment(commentId: string, ownerId: string): Observable<Comment> {
+    const { dataUrl } = environment;
+    return this.http.delete<Comment>(`${dataUrl}/comments/${commentId}/delete/${ownerId}`);
+  }
+
 }

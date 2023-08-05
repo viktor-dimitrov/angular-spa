@@ -5,6 +5,7 @@ import { Subscription, tap } from 'rxjs';
 import { CommentsService } from './comments.service';
 import { Comment } from 'src/app/shared/types/comment';
 import { DateService } from 'src/app/shared/date.service';
+import { User } from 'src/app/shared/types/user';
 
 @Component({
   selector: 'app-comments',
@@ -18,12 +19,14 @@ export class CommentsComponent implements OnInit, OnDestroy {
   @Input() recordId: string  = '';
   @ViewChild('form', { static: false }) form!: NgForm;
 
+
   comments: Comment[] | [] = [];
 
   
    get isLoggedIn(): boolean {
     return this.userService.isLogged
   }
+
 
   formattedDate(timestamp: number): string | null {
     return this.dateService.getFormattedDate(timestamp)
@@ -40,6 +43,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
     })
   }
 
+  isAuthor(commentOwnerId: string): boolean {
+    const user = this.userService.user;
+    return !!(commentOwnerId === user?._id)
+  }
 
   postComment(form: NgForm){
     const data = { ...form.value, recordId: this.recordId };
@@ -52,6 +59,21 @@ export class CommentsComponent implements OnInit, OnDestroy {
       }
     }
     )
+  }
+
+
+  deleteComment(commentId: string, ownerId: string): void {
+    const confirmed = window.confirm('ARE YOU SURE YOU WANT TO DELETE THIS COMMENT');
+    if (confirmed) {
+      this.commentsSubscription = this.commentsService.deleteComment(commentId, ownerId)
+        .subscribe({
+          next: (response) => {
+            this.comments = this.comments.filter(comment => comment._id !== response._id)
+        
+          },
+          error: ({ error }) => console.log(error.error) ,
+        })
+    }
   }
 
 

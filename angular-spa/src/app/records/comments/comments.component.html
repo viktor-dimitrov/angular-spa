@@ -21,8 +21,11 @@
             <p> - <strong>{{comment._ownerId.username}}</strong> - |  {{formattedDate(comment._createdOn)}} </p>
             <!-- <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p> -->
          </div>
-         <div class="comment-text">
-            <p>{{comment.text }}</p>
+         <div class="comment">
+               <p id="text">{{comment.text }}</p> 
+           <div *ngIf="isAuthor(comment._ownerId._id)" class="btn-container">
+            <button (click)="deleteComment(comment._id , comment._ownerId._id)" >Delete</button>
+           </div>
          </div>
     </div>
 </ng-container>
