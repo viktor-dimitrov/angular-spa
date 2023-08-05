@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 /* Box sizing rules */
 *,
 *::before,
@@ -38,7 +39,7 @@ body {
   display: block;
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  font: normal 16px/1.5 Ultra, serif;
+  font: normal 16px/1.5 'Righteous', serif;
   letter-spacing: 0.2em;
 
 }

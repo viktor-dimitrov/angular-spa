@@ -17,6 +17,14 @@
     font-family: 'Righteous', cursive;
 }
 
+.catalog>h1{
+ 
+    font-size: 2.5em;
+    color: rgb(241, 235, 145);
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
+}
+
 .card-container {
     width: 100%;
     display: flex;
