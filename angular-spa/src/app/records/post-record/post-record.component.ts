@@ -29,6 +29,7 @@ export class PostRecordComponent {
       this.recordSubscription = this.recordService.postRecord(data).pipe(
         tap(() => {
           this.userService.me().subscribe({
+
             complete: () => { this.router.navigate(['/catalog']) }
           })
         })

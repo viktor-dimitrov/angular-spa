@@ -32,6 +32,10 @@ ngOnInit(): void {
     this.user = this.userService.user;  
 }
 
+goToDetails(recordId: string): void {
+  this.router.navigate([`/catalog/${recordId}`]) 
+}
+
 editRecord(recordId: string, record: Record): void {
   
   this.router.navigate([`/profile/${recordId}/edit`], { state: {record: record, ownerId: record._ownerId} });
