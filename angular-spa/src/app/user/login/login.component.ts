@@ -19,6 +19,12 @@ export class LoginComponent {
   login(form: NgForm): void {
     const data = form.value;
 
+    if(data.email== ''|| data.password == '') {
+      this.error = 'All fields are required';
+    } else {
+      this.error = undefined;
+    }
+
     if (form.valid) {
       this.userService.login(data).subscribe({
         next: (response) => this.userService.setLsUser(response),

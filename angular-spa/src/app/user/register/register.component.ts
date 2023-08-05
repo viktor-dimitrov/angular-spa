@@ -20,8 +20,16 @@ export class RegisterComponent {
   register(form: NgForm): void {
     const data = {...form.value};
 
+    if(data.username == '' || data.email== ''|| data.phone == ''|| data.password == ''|| data.repassword == '') {
+      this.error = 'All fields are required';
+    } else {
+      this.error = undefined;
+    }
+   
+
     if (form.valid && (data.password === data.repassword)) {
 
+      
    
     if (form.valid && (form.value.password == form.value.repassword)) {
       this.userService.register(data).subscribe({
@@ -30,6 +38,7 @@ export class RegisterComponent {
         complete: () => this.router.navigate(['/'])
       })
     } else {
+     
       return
     }
 

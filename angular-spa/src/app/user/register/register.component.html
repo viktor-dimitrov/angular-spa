@@ -12,6 +12,7 @@
         <div class="error">
             <ng-container *ngIf="inputUsername.touched">
                 <p *ngIf="inputUsername.errors?.['required']">Username is required </p>
+                <p *ngIf="inputUsername.errors?.['minlength']">Username is too short </p>
             </ng-container>
         </div>
 
