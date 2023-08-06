@@ -1,6 +1,6 @@
 <div class="register">
 
-    <h2>Sign Up</h2>
+    <h1>Sign Up</h1>
 
     <form class="register-form" #form="ngForm" (ngSubmit)="register(form)">
 
@@ -18,7 +18,7 @@
 
         <div class="div-in-form">
             <label for="email">Email</label>
-            <input type="email" name="email" ngModel #inputEmail="ngModel" required [appEmail]="emailDomains">
+            <input type="email" name="email" ngModel #inputEmail="ngModel" required [appEmail]="emailDomains" >
         </div>
 
         <div class="error">
@@ -73,6 +73,8 @@
         <input class="submit" type="submit" value="Register">
 
     </form>
+
+    <a routerLink="/login">I have registration!</a>
 
     
 </div>

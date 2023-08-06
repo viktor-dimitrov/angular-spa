@@ -12,7 +12,7 @@
 }
 
 .register {
-    font-family: monospace, serif;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,8 +25,19 @@
 
 }
 
+.register>h1{
+ 
+    font-size: 2.5em;
+    color: #f58804;
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
+}
+
 .register label {
     font-weight: 900;
+    color: #f58804;
+    text-shadow: 2px 2px 4px #000203;
+    font-size: 1.5em;
 }
 
 .register-form {
@@ -42,14 +53,34 @@
     gap:1rem;
 }
 
+.div-in-form input {
+  font-size: 1.2em;
+  box-shadow: 2px 2px 4px #000203;
+  border: none;
+  
+}
+
 .error {
     height: 1.5rem;
     color: red;
     text-align:end;
     padding-right: 1rem;
+    text-shadow: 1px 1px 2px #000203;
 }
 
 .submit {
-    margin-top: 1rem;
+    margin-top: 1.5em;
+    width:50%;
+    align-self: center;
+    padding: 0.4em ;
+    font-size: 1.5em;
+    background-color: #f58904c0;
+    color:  rgb(234, 236, 88);
+    text-shadow: 2px 2px 4px #000203;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 4px #000203;
+    cursor: pointer;
+    letter-spacing: 0.2em;
 }
 

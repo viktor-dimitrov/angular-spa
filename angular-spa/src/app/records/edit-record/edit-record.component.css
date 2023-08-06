@@ -1,7 +1,6 @@
 
 
 .edit {
-    font-family: monospace, serif;
     display: flex;
     flex-direction: column;
     align-items: center;

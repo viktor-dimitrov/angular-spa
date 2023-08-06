@@ -13,7 +13,6 @@
 
 
 .login {
-    font-family: monospace, serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,12 +21,23 @@
     background-color: #8fd2ef;
     border-radius: 10%;
     padding: 2rem;
-    /* margin: 2rem auto 12.125rem auto; */
 
+
+}
+
+.login>h1{
+ 
+    font-size: 2.5em;
+    color: rgb(241, 235, 145);
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
 }
 
 .login label {
     font-weight: 900;
+    color: rgb(241, 235, 145);
+    text-shadow: 2px 2px 4px #000203;
+    font-size: 1.5em;
 }
 
 .login-form {
@@ -43,13 +53,34 @@
     gap:1rem;
 }
 
+.div-in-form input {
+    font-size: 1.2em;
+    box-shadow: 2px 2px 4px #000203;
+    border: none;
+  }
+
 .error {
     height: 1.5rem;
     color: red;
     text-align:end;
     padding-right: 1rem;
+    text-shadow: 1px 1px 2px #000203;
 }
 
 .submit {
-    margin-top: 1rem;
+    margin-top: 1.5em;
+    width:50%;
+    align-self: center;
+    padding: 0.4em ;
+    font-size: 1.5em;
+    background-color: rgb(234, 236, 88);
+    color:   #40b8eb;
+    text-shadow: 2px 2px 4px #000203;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 4px #000203;
+    cursor: pointer;
+    letter-spacing: 0.2em;
+
+ 
 }
