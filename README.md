@@ -2,6 +2,8 @@
 
 This is a Single Page Application (SPA) built with Angular. The project is hosted on GitHub and contains various components and services to implement the functionality of the application.
 
+## Deployed Angular SPA Application: https://viktor-dimitrov.github.io/angular-spa
+
 ## Project Structure
 
 The project has the following directory structure:
