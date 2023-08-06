@@ -20,6 +20,14 @@
 
 }
 
+.details>h1{
+ 
+    font-size: 2.5em;
+    color: rgb(28, 122, 33);;
+    text-shadow: 2px 2px 4px #6ff180;
+    letter-spacing: 0.3em;
+}
+
 .card-container {
     width: 100%;
     display: flex;

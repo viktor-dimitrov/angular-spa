@@ -11,9 +11,7 @@
 
             <div class="card-data-container">
         
-            <div  class="card-img-container">
-                <img src="assets/images/user.jpg" alt="">
-            </div>
+
           
             <div class="card-content-container">
 
@@ -23,14 +21,32 @@
                 <li><p>Phone</p> <h3>{{user.username}}</h3> </li>
                 <li><p>Records</p> <h3>{{user.myPosts?.length}}</h3> </li>
             </ul>
+
+            <button class="img-btn" (click)="toggleEditMode()" >Change Profile Picture</button>
+
+            <form  *ngIf="isEditMode" #form="ngForm" (ngSubmit)="saveProfilePicture(form)" >
+
+                <input type="text" name="imageUrl"   ngModel #inputImageUrl="ngModel">
+                <input type="submit" value="Save" >
+             
+            </form>
+
             </div>
+
+            <div  class="card-img-container">
+                <img src="assets/images/user.jpg" alt="">
+            </div>
+
+           
+
+
         </div>
         </article>
 
 
         <ng-container *ngIf="user.myPosts">
 
-        
+            <h1>My Records</h1>
 
         <article  *ngFor="let record of user.myPosts" class="card" >
 

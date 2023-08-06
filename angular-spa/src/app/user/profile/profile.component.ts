@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Subscription, tap } from 'rxjs';
 import { RecordService } from 'src/app/records/record.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -19,6 +20,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 private recordSubscription: Subscription | undefined;
    user: User | undefined = undefined;
    error: string | undefined = undefined;
+
+   isEditMode: boolean = false
 
   constructor(
     private userService: UserService,
@@ -55,6 +58,19 @@ deleteRecord(recordId: string, ownerId: string): void {
         error: ({ error }) => this.error = error.error,
       })
   }
+}
+
+toggleEditMode(): void {
+  this.isEditMode = !this.isEditMode;
+}
+
+saveProfilePicture(form: NgForm): void {
+
+  const data = form.value;
+  console.log(data);
+
+  this.toggleEditMode();
+
 }
 
 
