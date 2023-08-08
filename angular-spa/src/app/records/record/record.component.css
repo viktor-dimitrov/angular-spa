@@ -167,3 +167,25 @@
 }
 
 
+
+@media (max-width: 600px) {
+    .card-created-info {
+        flex-direction: column;
+    }
+
+    .card-data-container {
+        flex-direction: column;
+    }
+
+    .card-img-container {
+        width: 100%
+    }
+
+    .card-content-container {
+        width: 100%
+    }
+
+
+}
+
+
