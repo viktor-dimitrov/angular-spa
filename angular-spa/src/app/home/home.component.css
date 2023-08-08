@@ -51,3 +51,20 @@
     background-color:#f280d7d5;
       border-radius: 2rem;
 }
+
+@media (max-width: 600px) {
+    .home-container {
+        flex-direction: column;
+
+    }
+
+    .home .img-container {
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .welcome-info {
+        width: 100%;
+    }
+
+}

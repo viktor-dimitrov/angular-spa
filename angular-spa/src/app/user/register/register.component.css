@@ -19,7 +19,7 @@
     justify-content: space-around;
     gap:1rem;
     background-color: rgb(234, 236, 88);
-    border-radius: 10%;
+    border-radius: 2rem;
     padding: 2rem;
     margin: 2rem auto;
 
@@ -83,4 +83,25 @@
     cursor: pointer;
     letter-spacing: 0.2em;
 }
+
+@media (max-width: 580px) {
+    .div-in-form {
+     flex-direction: column;
+    }
+
+    .submit {
+        width: 80%;
+    }
+
+    .register>h1{
+        font-size: 2em;
+    }
+
+
+    .register label {
+        font-size: 1.2em;
+    }
+
+
+   }
 

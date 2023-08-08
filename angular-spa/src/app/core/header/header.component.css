@@ -80,3 +80,39 @@
 .logo-container:hover {
     transform:scale(1.1)
 }
+
+
+@media (max-width: 1200px) {
+    .header {
+        flex-direction: column;
+    }
+  
+    .logo-container {
+      margin: 0;      
+      right: 20%;
+    }
+  
+  }
+
+  @media (max-width: 600px) {
+    .header nav ul {
+        flex-direction:column-reverse;
+        
+        gap: 0.5em;
+    }
+  
+    .logo-container {
+      margin: 0;      
+      right: 30%;
+    }
+  
+  }
+
+  @media (max-width: 300px) {
+  
+    .logo-container {
+     display: none;
+    }
+  
+  }
+

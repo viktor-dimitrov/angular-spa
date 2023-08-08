@@ -19,7 +19,7 @@
     justify-content: space-around;
     gap:1rem;
     background-color: #8fd2ef;
-    border-radius: 10%;
+    border-radius: 2rem;
     padding: 2rem;
 
 
@@ -84,3 +84,24 @@
 
  
 }
+
+
+@media (max-width: 500px) {
+   .div-in-form {
+    flex-direction: column;
+   }
+
+   .submit {
+    width:80%;
+   }
+
+   .login>h1{
+    font-size: 2em;
+}
+
+
+.login label {
+    font-size: 1.2em;
+}
+
+  }

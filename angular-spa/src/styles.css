@@ -37,7 +37,7 @@ html:focus-within {
 /* Set core body defaults */
 body {
   display: block;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   text-rendering: optimizeSpeed;
   font: normal 16px/1.5 'Righteous', serif;
   letter-spacing: 0.2em;
@@ -68,19 +68,20 @@ select {
 
 
 
+@media (max-width: 1000px) {
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-/* @media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-   scroll-behavior: auto;
-  }
+  body {
+    font: normal 14px/1.5 'Righteous', serif;
   
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  }
+}
+
+/* @media (max-width: 700px) {
+
+  body {
+    font: normal 12px/1.2 'Righteous', serif;
+  
   }
 } */
+
+
