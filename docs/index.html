@@ -9,6 +9,24 @@
 
 <style>@import"https://fonts.googleapis.com/css2?family=Rock+Salt&family=Ultra&display=swap";@import"https://fonts.googleapis.com/css2?family=Righteous&display=swap";*,*:before,*:after{box-sizing:border-box}body{margin:0}body{display:block;text-rendering:optimizeSpeed;font:16px/1.5 Righteous,serif;letter-spacing:.2em}@media (max-width: 1000px){body{font:14px/1.5 Righteous,serif}}</style><link rel="stylesheet" href="styles.efac40596beeca4f.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.efac40596beeca4f.css"></noscript></head>
 <body>
+
+  <!-- Github Pages hack to allow SPA refresh without receiving 404. -->
+  <script>
+    (function () {
+      // Retrieve the URL the user was trying to access when receiving the 404.
+      var redirect = sessionStorage.redirect;
+      // Remove the URL from sessionStorage.
+      delete sessionStorage.redirect;
+      // Check if we actually need to redirect.
+      if (redirect && redirect != location.href) {
+        // We need to redirect to the URL the user was trying to access.
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+<!-- /Github Pages hack. -->
+
+
   <app-root></app-root>
 <script src="runtime.a105e64bade29a47.js" type="module"></script><script src="polyfills.3c377650f274a942.js" type="module"></script><script src="main.eeab3abe54d83bc7.js" type="module"></script></body>
 </html>
