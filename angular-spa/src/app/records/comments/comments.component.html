@@ -4,9 +4,9 @@
 
     <div class="comments-form-container card ">
         <form class="form"  #form="ngForm" (ngSubmit)="postComment(form )" >
-            <textarea name="text"  cols="20" rows="5"  ngModel #text  >  </textarea>
+            <textarea name="text"  cols="15" rows="5"  ngModel #text  >  </textarea>
 
-            <input type="submit" value="Post Comment">
+            <input type="submit" class="submit" value="Post Comment">
         </form>
     </div>
 
