@@ -35,6 +35,10 @@ export class PostRecordComponent {
         })
       ).subscribe({
         error: ({ error }) => {
+          if (error.status === 401) {
+            this.userService.logout();
+            this.router.navigate(['/login']);
+            }
           this.error = error.error,
           this.router.navigate(['/pageNotFound'])
         }

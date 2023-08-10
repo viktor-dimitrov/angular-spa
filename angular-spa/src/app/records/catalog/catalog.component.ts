@@ -3,6 +3,7 @@ import { Record} from '../../shared/types/record';
 import { RecordService } from '../record.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { UserService } from 'src/app/user/user.service';
 
 
 
@@ -23,7 +24,7 @@ export class CatalogComponent implements OnInit, OnDestroy{
 
 
 
-constructor(private recordService: RecordService, private router: Router){}
+constructor(private recordService: RecordService, private userService: UserService, private router: Router){}
 
 ngOnInit(): void {
   this.recordSubscription = this.recordService.getRecords().subscribe({
@@ -33,6 +34,10 @@ ngOnInit(): void {
     },
     error: (error) => {
      this.isLoading = false;
+     if (error.status === 401) {
+     this.userService.logout();
+     this.router.navigate(['/login']);
+     }
      console.error(`Error: ${error}`);
 
     } 

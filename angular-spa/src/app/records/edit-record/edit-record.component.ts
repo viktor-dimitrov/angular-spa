@@ -54,7 +54,13 @@ export class EditRecordComponent implements OnInit{
           })
         }))
         .subscribe({
-          error: ({ error }) => this.error = error.error,
+          error: ({ error }) => {
+            if (error.status === 401) {
+              this.userService.logout();
+              this.router.navigate(['/login']);
+              }
+              this.error = error.error
+          } 
         })
     } else {
 

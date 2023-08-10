@@ -54,6 +54,10 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.isLoading = false;
       },
       error: ({error}) => {
+        if (error.status === 401) {
+          this.userService.logout();
+          this.router.navigate(['/login']);
+          }
         this.error = error.error; 
         this.router.navigate(['/pageNotFound']);
         this.isLoading = false;
@@ -81,7 +85,13 @@ export class RecordComponent implements OnInit, OnDestroy{
           })
         }))
         .subscribe({
-          error: ({ error }) => this.error = error.error,
+          error: ({ error }) =>{
+             this.error = error.error;
+             if (error.status === 401) {
+              this.userService.logout();
+              this.router.navigate(['/login']);
+              }
+            }
         })
     }
   }
