@@ -1,4 +1,4 @@
-<div *ngIf="record" class="details">
+<div   class="details">
 
     <h1>Details</h1>
 
@@ -6,7 +6,11 @@
         <app-loader/>
      </div>
 
-    <section *ngIf="!isLoading" class="card-container"     >
+     <ng-container *ngIf="record" >
+
+    <section *ngIf="!isLoading"  class="card-container" >
+
+      
 
         <article class="card" >
 
@@ -71,6 +75,8 @@
 
     <app-comments [recordId]="record._id" > </app-comments>
     
+</ng-container>
+
 </ng-container>
        
         

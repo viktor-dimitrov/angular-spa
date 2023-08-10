@@ -54,13 +54,14 @@ export class RecordComponent implements OnInit, OnDestroy{
         this.isLoading = false;
       },
       error: ({error}) => {
+        this.isLoading = false;
         if (error.status === 401) {
           this.userService.logout();
           this.router.navigate(['/login']);
           }
         this.error = error.error; 
         this.router.navigate(['/pageNotFound']);
-        this.isLoading = false;
+      
       },
       complete: () => { console.log(this.record)}
     })
