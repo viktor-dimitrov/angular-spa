@@ -6,27 +6,37 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../types/user';
 import { UserService } from 'src/app/user/user.service';
+import { environment } from 'src/environments/environment';
+const { apiUrl } = environment;
+
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private userService: UserService) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
    
-    const user = this.userService.getUser();
+    const user = this.userService.user;
 
-   
+    if (req.url.startsWith('/api')) {
+      req = req.clone({
+        url: req.url.replace('/api', apiUrl),
+        // withCredentials: true, 
+      });
+    }
+
     if (user && user.accessToken) {
-      request = request.clone({
+      req = req.clone({
         setHeaders: {
           'x-authorization': user.accessToken,
         }
       })
     }
 
-    return next.handle(request);
+
+
+    return next.handle(req);
   }
 }

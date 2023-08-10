@@ -23,7 +23,7 @@ export class RecordComponent implements OnInit, OnDestroy{
   isLoading: boolean = true;
 
 
- get isOwner(): boolean {
+ get isOwner(): boolean {  
   const user = this.userService.user;
   return !!(this.record?._ownerId?._id === user?._id)
  } 

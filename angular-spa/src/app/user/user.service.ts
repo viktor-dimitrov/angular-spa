@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../shared/types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -45,13 +41,13 @@ export class UserService {
   }
 
   register(userData: User): Observable<User> {
-    const { authUrl } = environment;
-    return this.http.post<User>(`${authUrl}/register`, userData).pipe(tap((user)=>this.user$$.next(user)));
+
+    return this.http.post<User>(`/api/users/register`, userData).pipe(tap((user)=>this.user$$.next(user)));
   }
 
   login(userData: User): Observable<User> {
-    const { authUrl } = environment;
-    return this.http.post<User>(`${authUrl}/login`, userData).pipe(tap((user)=>this.user$$.next(user)));
+   
+    return this.http.post<User>(`/api/users/login`, userData).pipe(tap((user)=>this.user$$.next(user)));
   }
 
   logout(): void {
@@ -60,8 +56,7 @@ export class UserService {
   }
 
   me(): Observable<User> {
-    const { authUrl } = environment;
-     return this.http.get<User>(`${authUrl}/me`).pipe(tap((user)=>{
+     return this.http.get<User>(`/api/users/me`).pipe(tap((user)=>{
       this.user$$.next(user);
       this.setLsUser(user);
     }))

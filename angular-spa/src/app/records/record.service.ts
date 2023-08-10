@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
 import { Record } from '../shared/types/record';
 import { UserService } from '../user/user.service';
 
@@ -22,28 +21,24 @@ export class RecordService {
 
 
   getRecords() {
-    const { dataUrl } = environment;
-    return this.http.get<Record[]>(`${dataUrl}/records`).pipe(tap((record) => this.records$$.next(record)))
+
+    return this.http.get<Record[]>(`/api/data/records`).pipe(tap((record) => this.records$$.next(record)))
   }
 
   getOneRecord(recordId: string): Observable<Record> {
-    const { dataUrl } = environment;
-    return this.http.get<Record>(`${dataUrl}/records/${recordId}`);
+    return this.http.get<Record>(`/api/data/records/${recordId}`);
   }
 
   postRecord(data: Record): Observable<Record> {
-    const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/records`, data);
+    return this.http.post<Record>(`/api/data/records`, data);
   }
 
   deleteRecord(recordId: string, ownerId: string): Observable<Record> {
-    const { dataUrl } = environment;
-    return this.http.delete<Record>(`${dataUrl}/records/${recordId}/delete/${ownerId}`);
+    return this.http.delete<Record>(`/api/data/records/${recordId}/delete/${ownerId}`);
   }
 
   editRecord(data: Record, recordId: string): Observable<Record> {
-    const { dataUrl } = environment;
-    return this.http.post<Record>(`${dataUrl}/records/${recordId}/edit/${this.userService.user?._id}`, data);
+    return this.http.post<Record>(`/api/data/records/${recordId}/edit/${this.userService.user?._id}`, data);
   }
 
 

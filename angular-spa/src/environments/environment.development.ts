@@ -1,6 +1,6 @@
 export const environment = {
-    dataUrl: 'https://panicky-undershirt-mite.cyclic.app/data',
-    authUrl: 'https://panicky-undershirt-mite.cyclic.app/users',
-    // dataUrl: 'http://localhost:3000/data',
-    // authUrl: 'http://localhost:3000/users'
+    apiUrl: 'https://panicky-undershirt-mite.cyclic.app',
+
+    // apiUrl: 'http://localhost:3000',
+
 };
