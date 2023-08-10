@@ -32,20 +32,21 @@
             </ng-container>
         </div>
 
-        <div class="error">
+        <input class="submit" type="submit" value="Login">
+
+        <div class="server-error">
             <ng-container *ngIf="error">
-                <p>{{error}}</p>
+                    <p>{{error}}</p>
             </ng-container>
         </div>
 
 
-
-
-        <input class="submit" type="submit" value="Login">
-
-
     </form>
 
+    
+    <div *ngIf="isLoading" >
+        <app-loader/>
+     </div>
 
     <a routerLink="/register">I need to register!</a>
 

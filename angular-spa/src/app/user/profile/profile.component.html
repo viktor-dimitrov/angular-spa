@@ -17,7 +17,7 @@
                 <li><p>Records</p> <h3>{{user.myPosts?.length}}</h3> </li>
             </ul>
 
-            <button class="img-btn" (click)="toggleEditMode()" >Change Profile Picture</button>
+            <button disabled class="img-btn" (click)="toggleEditMode()" >Change Profile Picture</button>
 
             <form  *ngIf="isEditMode" #form="ngForm" (ngSubmit)="saveProfilePicture(form)" >
 

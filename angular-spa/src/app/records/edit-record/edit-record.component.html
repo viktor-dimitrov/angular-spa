@@ -2,6 +2,8 @@
 
     <h2>Edit Record</h2>
 
+ 
+
     <form  *ngIf="record" class="edit-form" #form="ngForm" (ngSubmit)="editRecord(form, record._id)"> 
 
         <div class="div-in-form">
@@ -69,7 +71,12 @@
 
         <input class="submit" type="submit" value="Save">
 
+    
     </form>
+
+    <div *ngIf="isLoading" >
+        <app-loader/>
+     </div>
 
     
 </div>

@@ -22,6 +22,7 @@ export class EditRecordComponent implements OnInit{
   record: Record | undefined;
   error: string | undefined;
   userId: string | undefined;
+  isLoading: boolean = false;
 
   constructor(
     private recordService: RecordService,
@@ -34,32 +35,37 @@ export class EditRecordComponent implements OnInit{
     this.record = history.state.record;
     this.userId = this.userService.user?._id;
     const ownerId = history.state.ownerId;
-
+  
     if( this.userId !== ownerId ) {
-        this.router.navigate(['/pageNotFound'])
+        this.router.navigate(['/pageNotFound']);
     }
   }
 
   ngOnInit(): void {
-  
+
   }
 
   editRecord(form: NgForm, recordId: string) {
     let data = { ...form.value };
     if (form.valid) {
+      this.isLoading = true;
       this.recordSubscription = this.recordService.editRecord(data, recordId).pipe(
         tap(() => {
           this.userService.me().subscribe({
-            complete: () => this.location.back()
+            complete: () => {
+              this.isLoading = false;
+              this.location.back();
+            }
           })
         }))
         .subscribe({
           error: ({ error }) => {
+            this.isLoading = false;
             if (error.status === 401) {
               this.userService.logout();
               this.router.navigate(['/login']);
               }
-              this.error = error.error
+              this.error = error.error;
           } 
         })
     } else {

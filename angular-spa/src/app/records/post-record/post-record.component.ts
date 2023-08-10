@@ -13,7 +13,8 @@ import { Subscription, tap } from 'rxjs';
 })
 export class PostRecordComponent {
   private recordSubscription: Subscription | undefined;
-  error: string | undefined
+  error: string | undefined;
+  isLoading: boolean = false;
 
   constructor(
     private recordService: RecordService,
@@ -26,22 +27,27 @@ export class PostRecordComponent {
     let data = { ...form.value };
 
     if (form.valid) {
+      this.isLoading = true;
       this.recordSubscription = this.recordService.postRecord(data).pipe(
         tap(() => {
           this.userService.me().subscribe({
-
-            complete: () => { this.router.navigate(['/catalog']) }
+            complete: () => {
+              this.isLoading = false;
+              this.router.navigate(['/catalog']);
+            }
           })
         })
       ).subscribe({
         error: ({ error }) => {
+          this.isLoading = false;
           if (error.status === 401) {
             this.userService.logout();
             this.router.navigate(['/login']);
-            }
-          this.error = error.error,
-          this.router.navigate(['/pageNotFound'])
-        }
+          }
+          this.error = error.error;
+            this.router.navigate(['/pageNotFound']);
+        },
+
       })
     } else {
 

@@ -64,15 +64,21 @@
             </ng-container>
         </div>
 
-        <div class="error">
-            <ng-container *ngIf="error">
-                <p>{{error}}</p>
-            </ng-container>
-        </div>
-
         <input class="submit" type="submit" value="Register">
 
+        
+        <div class="server-error">
+            <ng-container *ngIf="error">
+                    <p>{{error}}</p>
+            </ng-container>
+        </div>
+     
+
     </form>
+
+    <div *ngIf="isLoading" >
+        <app-loader/>
+     </div>
 
     <a routerLink="/login">I have registration!</a>
 

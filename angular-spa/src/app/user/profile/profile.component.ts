@@ -20,8 +20,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 private recordSubscription: Subscription | undefined;
    user: User | undefined = undefined;
    error: string | undefined = undefined;
-
-   isEditMode: boolean = false
+   isEditMode: boolean = false;
+  
 
   constructor(
     private userService: UserService,

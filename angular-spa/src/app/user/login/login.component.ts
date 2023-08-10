@@ -13,6 +13,7 @@ export class LoginComponent {
 
   emailDomains = DEFAULT_EMAIL_DOMAINS;
   error: string | undefined;
+  isLoading: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -21,15 +22,23 @@ export class LoginComponent {
 
     if(data.email== ''|| data.password == '') {
       this.error = 'All fields are required';
+      return
     } else {
       this.error = undefined;
     }
 
     if (form.valid) {
+      this.isLoading = true;
       this.userService.login(data).subscribe({
         next: (response) => this.userService.setLsUser(response),
-        error: ({ error }) => this.error = error.error,
-        complete: () => this.router.navigate(['/'])
+        error: ({ error }) => {
+          this.isLoading = false;
+          this.error = error.error
+        },
+        complete: () => {
+          this.isLoading = false;
+          this.router.navigate(['/catalog']);
+        }
       })
 
     }
