@@ -1,4 +1,56 @@
 
-h1{
-    color: white
+
+:host {
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#f2f5fa63;
+    border-radius: 2rem;
+    padding: 2% ;
+}
+
+.not-found {
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap:1rem;
+    background-color:#384257;
+    border-radius: 2rem;
+    padding: 2rem;
+    margin: 2rem auto;
+    color:#f7f8f3;
+}
+
+.not-found>p{
+    text-align: center;
+    font-weight: 900;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
+}
+
+.not-found>span{
+    font-size: 9em;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
+    
+}
+
+
+@media (max-width: 600px) {
+    
+.not-found>p{
+    font-size: 1.5em;
+}
+
+.not-found>span{
+    font-size: 4em;
+}
+
 }

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { RecordRoutingModule } from './record-routing.module';
 import { EditRecordComponent } from './edit-record/edit-record.component';
 import { CommentsComponent } from './comments/comments.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -26,8 +27,7 @@ import { CommentsComponent } from './comments/comments.component';
     CommonModule,
     FormsModule,
     SharedModule,
-    RecordRoutingModule
-
+    RecordRoutingModule,
   ],
   exports: [
     RecordComponent,

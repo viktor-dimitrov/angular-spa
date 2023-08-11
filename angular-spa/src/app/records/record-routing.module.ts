@@ -6,6 +6,7 @@ import { PostRecordComponent } from './post-record/post-record.component';
 import { RecordComponent } from './record/record.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { EditRecordComponent } from './edit-record/edit-record.component';
+import { NotFoundComponent } from '../core/not-found/not-found.component';
 
 
 
@@ -27,7 +28,9 @@ const routes: Routes = [
         path: ':recordId/edit',
         component: EditRecordComponent,
         canActivate: [AuthActivate]
-      }]
+      },
+
+    ]
   },
 
   {
@@ -36,7 +39,6 @@ const routes: Routes = [
     canActivate: [AuthActivate]
   
   },
-
 
 ];
 
