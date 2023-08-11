@@ -1,6 +1,6 @@
 <div class="post">
 
-    <h2>Add Record</h2>
+    <h1>Add Record</h1>
 
     <form class="post-form" #form="ngForm" (ngSubmit)="postRecord(form)">
 
@@ -27,7 +27,7 @@
         </div>
 
         <div class="div-in-form">
-            <label for="Year">Year Number</label>
+            <label for="Year">Year</label>
             <!-- <input type="number" name="year" ngModel #inputYear="ngModel" required> -->
             <select name="year" ngModel #inputYear="ngModel"  required >
                 <ng-container *ngFor="let year of years">
@@ -66,13 +66,14 @@
             </ng-container>
         </div>
 
-        <div class="error">
+  
+        <input class="submit" type="submit" value="Add">
+
+        <div class="server-error">
             <ng-container *ngIf="error">
-                <p>{{error}}</p>
+                    <p>{{error}}</p>
             </ng-container>
         </div>
-
-        <input class="submit" type="submit" value="Add">
 
     </form>
 

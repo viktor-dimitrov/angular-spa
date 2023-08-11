@@ -54,6 +54,14 @@ export class EditRecordComponent implements OnInit{
 
   editRecord(form: NgForm, recordId: string) {
     let data = { ...form.value };
+
+    if (data.artist == '' || data.title == '' || data.year == '' || data.style == '' || data.imageUrl == '') {
+      this.error = 'All fields are required';
+      return
+    } else {
+      this.error = undefined;
+    }
+    
     if (form.valid) {
       this.isLoading = true;
       this.recordSubscription = this.recordService.editRecord(data, recordId).pipe(

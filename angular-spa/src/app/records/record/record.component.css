@@ -170,6 +170,42 @@
     text-align: end;
 }
 
+button {
+    cursor: pointer;
+    align-self: center;
+    padding: 0.1em 0.4em ;
+    font-size: 1.4em;
+    background-color: #6ff180;
+    color:   rgb(241, 235, 145);
+    text-shadow: 2px 2px 4px #000203;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.2em;
+}
+
+button:hover {
+    background-color: rgb(241, 235, 145);
+    color: #6ff180;  ;
+}
+
+.btn-delete{
+    background-color: #6ff180;
+    color:    rgb(173, 7, 7);
+ 
+
+}
+.btn-delete:hover {
+    background-color:  rgb(245, 8, 8);
+    color: #353835; 
+}
+
+button:disabled {
+    background-color: #5ea167;
+    color:   rgb(161, 157, 97);
+
+}
+
 
 
 @media (max-width: 1000px) {

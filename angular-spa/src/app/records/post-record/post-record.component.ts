@@ -35,6 +35,12 @@ export class PostRecordComponent  implements OnInit{
   postRecord(form: NgForm) {
 
     let data = { ...form.value };
+    if (data.artist == '' || data.title == '' || data.year == '' || data.style == '' || data.imageUrl == '') {
+      this.error = 'All fields are required';
+      return
+    } else {
+      this.error = undefined;
+    }
 
 
     if (form.valid) {

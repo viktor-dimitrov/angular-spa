@@ -1,3 +1,4 @@
+
 :host {
     width: 90%;
     margin: 2rem auto;
@@ -5,26 +6,38 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:rgba(233, 236, 88, 0.329);
+    background-color:#8eaef762;
     border-radius: 2rem;
     padding: 2% ;
 }
 
 .edit {
+   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     gap:1rem;
-    background-color: rgb(234, 236, 88);
-    border-radius: 10%;
+    background-color: #8eaef7;
+    border-radius: 2rem;
     padding: 2rem;
     margin: 2rem auto;
 
 }
 
+.edit>h1{
+ 
+    font-size: 2.5em;
+    color: #3b5aa3;
+    text-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.3em;
+}
+
 .edit label {
     font-weight: 900;
+    color: #3b5aa3;
+    text-shadow: 2px 2px 4px #000203;
+    font-size: 1.5em;
 }
 
 .edit-form {
@@ -40,13 +53,67 @@
     gap:1rem;
 }
 
+.div-in-form input, select {
+  font-size: 1.2em;
+  box-shadow: 2px 2px 4px #000203;
+  border: none;
+  
+}
+
+.div-in-form select {
+  padding: 0 2rem;
+    
+  }
+
 .error {
     height: 1.5rem;
     color: red;
     text-align:end;
     padding-right: 1rem;
+    text-shadow: 1px 1px 2px #000203;
+}
+
+.server-error {
+    height: 1.5rem;
+    color: red;
+    text-align:center;
+    text-shadow: 1px 1px 2px #000203;
+    margin-top: 1rem;
 }
 
 .submit {
-    margin-top: 1rem;
+    margin-top: 1.5em;
+    width:50%;
+    align-self: center;
+    padding: 0.4em ;
+    font-size: 1.5em;
+    background-color: #3b5aa3;
+    color:  #8eaef7;
+    text-shadow: 2px 2px 4px #000203;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 4px #000203;
+    cursor: pointer;
+    letter-spacing: 0.2em;
 }
+
+@media (max-width: 580px) {
+    .div-in-form {
+     flex-direction: column;
+    }
+
+    .submit {
+        width: 80%;
+    }
+
+    .edit>h1{
+        font-size: 2em;
+    }
+
+
+    .edit label {
+        font-size: 1.2em;
+    }
+
+
+   }

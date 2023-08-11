@@ -17,7 +17,7 @@
                 <li><p>Records</p> <h3>{{user.myPosts?.length}}</h3> </li>
             </ul>
 
-            <button disabled class="img-btn" (click)="toggleEditMode()" >Change Profile Picture</button>
+            <button disabled class="img-btn" (click)="toggleEditMode()" >Edit Avatar</button>
 
             <form  *ngIf="isEditMode" #form="ngForm" (ngSubmit)="saveProfilePicture(form)" >
 
@@ -29,7 +29,7 @@
             </div>
 
             <div  class="card-img-container">
-                <img src="assets/images/user.jpg" alt="">
+                <img src="assets/images/defaultAvatar.png" alt="">
             </div>
 
            
