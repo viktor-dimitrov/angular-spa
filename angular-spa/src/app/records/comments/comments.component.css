@@ -28,9 +28,39 @@
     width: 100%;
 }
 
-.submit {
-    width:30%;
+.submit, button {
+    display: inline;
+    cursor: pointer;
+    align-self: center;
+    padding: 0.1em 0.4em ;
+    margin-top: 1em;
+    font-size: 1.4em;
+    background-color: #6ff180;
+    color:   rgb(241, 235, 145);
+    text-shadow: 2px 2px 4px #000203;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 2px 4px #000203;
+    letter-spacing: 0.2em;
 }
+
+.submit:hover {
+    background-color: rgb(241, 235, 145);
+    color: #6ff180;  ;
+}
+
+.btn-delete{
+    background-color: #6ff180;
+    color:    rgb(173, 7, 7);
+ 
+
+}
+.btn-delete:hover {
+    background-color:  rgb(245, 8, 8);
+    color: #353835; 
+}
+
+
 
 .card {
     background-color: rgba(24, 26, 24, 0.658);
@@ -64,6 +94,15 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+#text {
+    word-wrap: break-word;
+ 
+}
+
+
+ 
+
 
 
 

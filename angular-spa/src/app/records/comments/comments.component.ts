@@ -27,6 +27,10 @@ export class CommentsComponent implements OnInit, OnDestroy {
     return this.userService.isLogged
   }
 
+  get hasComments():boolean {
+    return !!this.comments.length;
+  }
+
 
   formattedDate(timestamp: number): string | null {
     return this.dateService.getFormattedDate(timestamp)

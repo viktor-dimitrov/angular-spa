@@ -206,6 +206,11 @@ button:disabled {
 
 }
 
+.comments {
+    width: 60%;
+}
+
+
 
 
 @media (max-width: 1000px) {

@@ -12,21 +12,22 @@
 
 
 
-<ng-container>
+<ng-container  *ngIf="hasComments">
     <h2>Comments</h2>
 
 <ng-container   *ngFor="let comment of comments">
     <div class="card">
         <div class="card-created-info">
+          
             <p> - <strong>{{comment._ownerId.username}}</strong> - |  {{formattedDate(comment._createdOn)}} </p>
             <!-- <p *ngIf="record._updatedOn">Updated at: {{ updatedOn }}</p> -->
          </div>
-         <div class="comment">
-               <p id="text">{{comment.text }}</p> 
+         <p id="text">{{comment.text }}</p> 
+       
            <div *ngIf="isAuthor(comment._ownerId._id)" class="btn-container">
-            <button (click)="deleteComment(comment._id , comment._ownerId._id)" >Delete</button>
+            <button class="btn-delete" (click)="deleteComment(comment._id , comment._ownerId._id)" >Delete</button>
            </div>
-         </div>
+     
     </div>
 </ng-container>
 

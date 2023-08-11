@@ -1,7 +1,7 @@
 
 
 footer {
-    background-color:#8eaff5;
+    background-color: rgba(34, 243, 44, 0.329);
     color: aliceblue;
     text-align: center;
     display: block;
@@ -9,5 +9,6 @@ footer {
     align-self: flex-end;
     position: absolute;
     bottom: 0;
+    padding:1rem;
   
 }

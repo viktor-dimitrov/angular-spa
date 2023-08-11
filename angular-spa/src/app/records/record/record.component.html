@@ -56,9 +56,6 @@
                     <li> <p>Phone:</p> <h3>{{record._ownerId.phone}}</h3></li>
                     <li> <p>Posts:</p> <h3>{{record._ownerId.myPosts?.length}}</h3> </li>
                 </ul>
-
-               
-
                 <!-- <div class="owner-img-container">
                     <img src="assets/images/user.jpg" alt="">
                 </div> -->
@@ -71,11 +68,11 @@
     </section> 
 
     
-<ng-container>
+<div class="comments">
 
     <app-comments [recordId]="record._id" > </app-comments>
     
-</ng-container>
+</div>
 
 </ng-container>
        
