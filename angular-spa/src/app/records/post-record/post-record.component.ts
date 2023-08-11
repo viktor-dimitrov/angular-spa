@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecordService } from '../record.service';
 import { NgForm, NgModel } from '@angular/forms';
@@ -11,10 +11,12 @@ import { Subscription, tap } from 'rxjs';
   styleUrls: ['./post-record.component.css'],
   providers: [RecordService]
 })
-export class PostRecordComponent {
+export class PostRecordComponent  implements OnInit{
   private recordSubscription: Subscription | undefined;
   error: string | undefined;
   isLoading: boolean = false;
+  selectedYear: number = 2023;
+  years: number[] = [];
 
   constructor(
     private recordService: RecordService,
@@ -22,9 +24,18 @@ export class PostRecordComponent {
     private userService: UserService
   ) { }
 
+  ngOnInit(): void {
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1947; year--) {
+      this.years.push(year);
+    }
+    this.selectedYear = currentYear;
+  }
+
   postRecord(form: NgForm) {
 
     let data = { ...form.value };
+
 
     if (form.valid) {
       this.isLoading = true;

@@ -30,7 +30,12 @@
 
         <div class="div-in-form">
             <label for="Year">Year Number</label>
-            <input type="number" name="year" [(ngModel)]="record.year" #inputYear="ngModel" required>
+            <!-- <input type="number" name="year" [(ngModel)]="record.year" #inputYear="ngModel" required> -->
+            <select name="year" #inputYear="ngModel" [(ngModel)]="selectedYear">
+                <ng-container *ngFor="let year of years">
+                  <option [value]="year">{{ year }}</option>
+                </ng-container>
+              </select>
         </div>
 
         <div class="error">

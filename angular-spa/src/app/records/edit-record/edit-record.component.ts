@@ -23,6 +23,8 @@ export class EditRecordComponent implements OnInit{
   error: string | undefined;
   userId: string | undefined;
   isLoading: boolean = false;
+  selectedYear: number | undefined = 2023;
+  years: number[] = [];
 
   constructor(
     private recordService: RecordService,
@@ -42,7 +44,12 @@ export class EditRecordComponent implements OnInit{
   }
 
   ngOnInit(): void {
-
+    const currentYear = new Date().getFullYear();
+    for (let year = currentYear; year >= 1947; year--) {
+      this.years.push(year);
+    }
+    this.selectedYear = this.record?.year;
+  
   }
 
   editRecord(form: NgForm, recordId: string) {
