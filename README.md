@@ -55,6 +55,13 @@ To run the application locally, follow these steps:
    - Install the dependencies for the Express server: `npm install`
    - Configure the Express server (e.g., set up MongoDB connection and other required configurations).
    - Start the Express server: `npm start`
+6. **Configure Angular Environment:**
+   - In the `src/environments` directory, you'll find the `environment.ts` file. This file contains environment-specific settings.
+   - Update the `apiUrl` variable in `environment.ts` to match the URL of your Express backend server. For example:
+     ```
+     apiUrl: 'http://localhost:3000'
+     ```
+
 
 Now, both the Angular frontend and Express backend server should be up and running. You can access the application in your web browser by going to `http://localhost:4200/`.
 
