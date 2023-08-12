@@ -30,7 +30,29 @@
     flex-direction: column;
     width: 100%;
     font-family: 'Righteous', cursive;
-    margin-bottom: 10em;
+ 
+}
+
+.code {
+   
+}
+
+a {
+    text-align: center;
+    margin-top: 6em;
+    margin-bottom: 0.6em;
+    font-size: 4em;
+    color: white;
+    text-shadow: 4px 4px 4px #000203;
+    text-decoration: none;
+}
+
+a>span {
+    display:block;
+    font-size: 0.4em;
+    color: white;
+    text-shadow: 4px 4px 4px #000203;
+    text-decoration: none;
 }
 
 
