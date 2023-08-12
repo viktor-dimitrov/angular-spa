@@ -100,7 +100,11 @@
  
 }
 
-
+@media (max-width: 600px) {
+    .submit {
+        font-size: 1em;
+    }
+}
  
 
 
