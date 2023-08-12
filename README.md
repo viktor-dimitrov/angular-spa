@@ -14,10 +14,45 @@ The project has the following directory structure:
 
 - `/src`: The main source directory of the Angular application.
   - `/app`: Contains the core components and services of the application.
-    - `/core`: Directory for core components and shared services.
+    - `/core`: Directory for core module.
+      - `/footer`
+      - `/guards`
+      - `/header`
+      - `/not-found`
+      - `core.module.ts`
     - `/records`: Directory for components and services related to records.
-    - `/user`: Directory for components and services related to users.
+      - `/catalog`
+      - `/comments`
+      - `/edit-record`
+      - `/post-record`
+      - `/record`
+      - `record-routing.module.ts`
+      - `record.module.ts`
+      - `record.service.spec.ts`
+      - `record.service.ts`
     - `/shared`: Directory for shared components, services, or utilities.
+      - `/interceptors`
+      - `/loader`
+      - `/types`
+      - `/validators`
+    - `/user`: Directory for components and services related to users.
+      - `/login`
+      - `/profile`
+      - `/register`
+      - `user-routing.module.ts`
+      - `user.module.ts`
+      - `user.service.spec.ts`
+      - `user.service.ts`
+    - `/assets`: Directory for application assets.
+    - `/images`: Contains image resources used in the application.
+    - `/environments`: Directory for environment configuration files.
+    - `app-routing.module.ts`: Routing configuration for the application.
+    - `app.component.css`: Stylesheet for the root component.
+    - `app.component.html`: HTML template for the root component.
+    - `app.component.spec.ts`: Component testing specification.
+    - `app.component.ts`: TypeScript file for the root component.
+    - `app.module.ts`: Application module configuration.
+
 
 ## Components
 
